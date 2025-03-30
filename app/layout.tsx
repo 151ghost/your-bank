@@ -22,7 +22,9 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={`${lexend.variable} antialiased relative`}>
+			<body
+				className={`${lexend.variable} antialiased relative overflow-x-hidden`}
+			>
 				<Image
 					src="/assets/vector1.png"
 					alt="Vector"
@@ -33,7 +35,9 @@ export default function RootLayout({
 
 				<Header />
 
-				<main className="w-full flex flex-col items-center">{children}</main>
+				<main className="w-full flex flex-col items-center gap-[75px]">
+					{children}
+				</main>
 			</body>
 		</html>
 	);
