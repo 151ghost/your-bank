@@ -35,9 +35,7 @@ export default function RootLayout({
 
 				<Header />
 
-				<main className="w-full flex flex-col items-center gap-[75px]">
-					{children}
-				</main>
+				<main className="w-full flex flex-col items-center">{children}</main>
 			</body>
 		</html>
 	);

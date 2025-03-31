@@ -92,7 +92,7 @@ export default function HeroSection() {
 
 				<motion.div
 					variants={slideOutVariants}
-					className="absolute -top-[30px] md:-right-[75px] md:-top-[45px]"
+					className="absolute -top-[30px] -right-[15px] md:-right-[75px] md:-top-[45px] overflow-x-hidden"
 				>
 					<Image
 						src="/assets/abstract.png"
