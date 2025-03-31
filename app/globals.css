@@ -172,15 +172,16 @@
 	@apply relative bg-black overflow-hidden;
 }
 .card-wrapper::before {
-	@apply absolute h-[200%] w-[200%] -left-[50%] -top-[50%] content-[''] bg-conic from-[#CAFF33] via-[#CAFF33]/50 to-[#CAFF33]/0 animate-border-spin;
+	animation: border-spin 4s linear infinite;
+
+	@apply absolute h-[200%] w-[200%] -left-[50%] -top-[50%] content-[''] bg-conic from-[#CAFF33] via-[#CAFF33]/50 to-[#CAFF33]/0;
 }
 
-@theme {
-	--animate-border-spin: border-spin 10s linear infinite;
-
-	@keyframes border-spin {
-		100% {
-			transform: rotate(-360deg);
-		}
+@keyframes border-spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
 	}
 }
