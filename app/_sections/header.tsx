@@ -21,7 +21,7 @@ export default function Header() {
 	return (
 		<header className="w-full h-fit flex justify-center mt-[50px]">
 			<nav className="container h-[95px] flex items-center justify-between py-5 px-[34px] bg-grey-11 border border-grey-15 rounded-[100px]">
-				<Image src="/assets/logo.png" alt="Logo" width={156} height={40} />
+				<Image src="/assets/Logo.png" alt="Logo" width={156} height={40} />
 
 				<div className="hidden lg:flex gap-[26px]">
 					{navLinks.slice(0, 4).map((item) => {

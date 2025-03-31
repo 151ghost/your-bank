@@ -166,14 +166,13 @@
 	body {
 		@apply bg-background text-foreground font-[family-name:var(--font-lexend)];
 	}
+}
+
+@layer utilities {
 	.card-wrapper {
 		@apply relative bg-black overflow-hidden;
 	}
 	.card-wrapper::before {
-		/* background: conic-gradient(#c3c3c3 5%, #d9d9d9 48%, #fdfbfa 100%); */
-
-		/* background: conic-gradient(#bababa 0%, #a41045 66%, #223b73 90%); */
-
 		@apply absolute h-[200%] w-[200%] -left-[50%] -top-[50%] content-[''] bg-conic from-[#CAFF33] via-[#CAFF33]/50 to-[#CAFF33]/0 animate-border-spin;
 	}
 }
