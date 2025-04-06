@@ -6,10 +6,9 @@ export default function AnimatedBorderWrapper({
 	className?: string;
 }) {
 	return (
-		<div
-			className={`relative bg-black overflow-hidden before:absolute before:h-[200%] before:w-[200%] before:-left-1/2 before:-top-1/2 content-[''] before:bg-conic before:from-[#CAFF33] before:via-[#CAFF33]/50 before:to-[#CAFF33]/0 before:animate-border-spin ${className}`}
-		>
-			{children}
+		<div className={`relative bg-black overflow-hidden ${className}`}>
+			<div className="absolute w-[200%] h-[200%] -left-1/2 -top-1/2 inset-0 [background:conic-gradient(from_0deg_at_50%_50%,#CAFF33_0%,rgba(202,255,51,0.5)_50%,rgba(202,255,51,0)_100%)] animate-border-spin" />
+			<div className="relative z-10 h-full">{children}</div>
 		</div>
 	);
 }
