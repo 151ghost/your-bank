@@ -38,7 +38,13 @@ export default function OurFeatures() {
 			</SectionDetailsContainer>
 
 			<div className="flex max-lg:flex-col gap-5">
-				<div className="lg:max-w-[308px] lg:w-full max-h-fit flex lg:flex-col p-5 lg:p-10 xl:p-[50px] rounded-[10px] gap-5 bg-grey-11 overflow-x-auto scrollbar-none">
+				<motion.div
+					initial="hidden"
+					whileInView="visible"
+					viewport={{ once: true }}
+					variants={fadeInUpVariants}
+					className="lg:max-w-[308px] lg:w-full max-h-fit flex lg:flex-col p-5 lg:p-10 xl:p-[50px] rounded-[10px] gap-5 bg-grey-11 overflow-x-auto scrollbar-none"
+				>
 					{["Online Banking", "Financial Tools", "Customer Support"].map(
 						(item, index) => (
 							<Button
@@ -59,7 +65,7 @@ export default function OurFeatures() {
 							</Button>
 						),
 					)}
-				</div>
+				</motion.div>
 
 				<motion.div
 					key={activeIndex}
@@ -82,7 +88,7 @@ function FeatureCard({ title, description }: IFearures) {
 	return (
 		<motion.div variants={fadeInUpVariants} className="w-full min-h-full">
 			<AnimatedBorderWrapper className="p-[1px] rounded-[10px] h-full">
-				<div className="relative h-full flex flex-col gap-6 md:gap-[30px] rounded-[10px] bg-grey-11 border border-grey-15 p-10 md:p-[50px] group">
+				<div className="relative h-full flex flex-col gap-6 md:gap-[30px] rounded-[10px] bg-grey-11 p-10 md:p-[50px] group">
 					<div className="flex items-center justify-between">
 						<p className="text-lg xl:text-[22px]">{title}</p>
 

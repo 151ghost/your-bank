@@ -85,8 +85,8 @@ function UseCaseSections({ item }: { item: IUseCases }) {
 					src="/assets/vector1.png"
 					alt="Vector"
 					width={248}
-					height={200}
-					className="absolute -top-[10px] -left-1"
+					height={248}
+					className="absolute -top-2.5 -left-2.5"
 				/>
 
 				{item.advantages.map((advantage) => (
@@ -126,7 +126,7 @@ function UseCaseSections({ item }: { item: IUseCases }) {
 					<motion.p
 						custom={item.case === "Business"}
 						variants={slideInVariants}
-						className="max-md:text-center max-md:text-sm xl:text-lg font-light grey-70"
+						className="max-md:w-[90%] max-md:text-center max-md:text-sm xl:text-lg font-light grey-70"
 					>
 						{item.description}
 					</motion.p>

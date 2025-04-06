@@ -16,7 +16,7 @@ import AnimatedBorderWrapper from "@/components/custom/animated-border-wrapper";
 export default function HeroSection() {
 	return (
 		<section className="container flex max-xl:flex-col items-center justify-center gap-[100px] gap-y-[120px] py-[100px]">
-			<div className="w-[80%] xl:max-w-1/2 xl:w-[649px] flex flex-col max-xl:items-center gap-[50px]">
+			<div className="md:w-[80%] xl:max-w-1/2 xl:w-[649px] flex flex-col max-xl:items-center gap-[50px]">
 				<motion.div
 					initial="hidden"
 					animate="visible"

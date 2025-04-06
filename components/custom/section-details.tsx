@@ -40,9 +40,9 @@ export function SectionTitle({
 		<motion.p
 			variants={variant}
 			custom={custom}
-			className={clsx("font-medium leading-[150%]", {
+			className={clsx("max-md:text-center font-medium leading-[150%]", {
 				"text-green-60": faq,
-				"max-md:text-center text-2xl md:text-[30px] xl:text-[40px]": cta,
+				"xtext-2xl md:text-[30px] xl:text-[40px]": cta,
 				"text-[28px] md:text-[38px] xl:text-5xl": !cta,
 			})}
 		>
@@ -67,7 +67,7 @@ export function SectionDescription({
 			className={clsx(
 				"max-md:text-sm xl:text-lg max-md:text-center font-light grey-70 leading-[150%]",
 				{ "max-w-[95%] md:max-w-[80%]": cta },
-				{ "max-w-[80%]": !cta },
+				{ "max-w-[90%] md:max-w-[80%]": !cta },
 			)}
 		>
 			{text}
