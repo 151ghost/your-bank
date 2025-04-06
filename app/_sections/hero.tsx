@@ -161,7 +161,7 @@ function TransactionCard() {
 			<AnimatedBorderWrapper className="w-full md:w-[410px] h-fit rounded-[10px] p-[1px]">
 				<div className="absolute w-full h-full inset-0 bg-[rgba(0,0,0,0.5)] rounded-[10px]" />
 
-				<div className="relative w-full flex flex-col gap-[26px] p-5 md:p-[35px] rounded-[10px] bg-[url(/assets/transaction-bg.png)] bg-black">
+				<div className="relative w-full max-md:h-[368px] flex flex-col gap-[26px] p-5 md:p-[35px] rounded-[10px] bg-[url(/assets/transaction-bg.png)] bg-black">
 					<div className="relative flex flex-col gap-[17px] z-10">
 						<p className="text-[10px] md:text-[17px] font-medium">
 							Your Transactions
@@ -285,7 +285,7 @@ function SupportedCurrencies() {
 			variants={fadeInUpVariants}
 			className="w-fit flex items-center gap-3 py-[5px] md:py-[9px] pl-3 md:pl-5 pr-[5px] md:pr-[9px] rounded-full bg-[#22251B] mt-5 ml-auto md:-mr-10"
 		>
-			<p className="max-md:text-9px">Supported Currencies</p>
+			<p className="max-md:text-[9px]">Supported Currencies</p>
 
 			<div className="w-fit flex bg-grey-10 gap-[7px] p-[9px] rounded-full">
 				{supported_currencies.map((item) => (

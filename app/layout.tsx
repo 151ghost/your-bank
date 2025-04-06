@@ -3,6 +3,7 @@ import { Lexend } from "next/font/google";
 import "./globals.css";
 import Header from "./_sections/header";
 import Image from "next/image";
+import Footer from "./_sections/footer";
 
 const lexend = Lexend({
 	variable: "--font-lexend",
@@ -10,7 +11,7 @@ const lexend = Lexend({
 });
 
 export const metadata: Metadata = {
-	title: "Your Bank",
+	title: "YourBanK",
 	description:
 		"Your trusted banking partner for secure and convenient financial services",
 };
@@ -36,6 +37,8 @@ export default function RootLayout({
 				<Header />
 
 				<main className="w-full flex flex-col items-center">{children}</main>
+
+				<Footer />
 			</body>
 		</html>
 	);

@@ -27,23 +27,24 @@ export function SectionTitle({
 	specialText,
 	custom = false,
 	faq = false,
+	cta = false,
 }: {
 	variant: Variants;
 	custom?: boolean;
 	defaultText?: string;
 	specialText?: string;
 	faq?: boolean;
+	cta?: boolean;
 }) {
 	return (
 		<motion.p
 			variants={variant}
 			custom={custom}
-			className={clsx(
-				"text-[28px] md:text-[38px] xl:text-5xl font-medium leading-[150%]",
-				{
-					"text-green-60": faq,
-				},
-			)}
+			className={clsx("font-medium leading-[150%]", {
+				"text-green-60": faq,
+				"max-md:text-center text-2xl md:text-[30px] xl:text-[40px]": cta,
+				"text-[28px] md:text-[38px] xl:text-5xl": !cta,
+			})}
 		>
 			{defaultText}{" "}
 			<span className={faq ? "text-white" : "text-green-60"}>
@@ -56,13 +57,18 @@ export function SectionTitle({
 export function SectionDescription({
 	variant,
 	text,
+	cta = false,
 	custom = false,
-}: { variant: Variants; text?: string; custom?: boolean }) {
+}: { variant: Variants; text?: string; cta?: boolean; custom?: boolean }) {
 	return (
 		<motion.p
 			variants={variant}
 			custom={custom}
-			className="max-w-[80%] max-md:text-sm xl:text-lg max-md:text-center font-light grey-70 leading-[150%]"
+			className={clsx(
+				"max-md:text-sm xl:text-lg max-md:text-center font-light grey-70 leading-[150%]",
+				{ "max-w-[95%] md:max-w-[80%]": cta },
+				{ "max-w-[80%]": !cta },
+			)}
 		>
 			{text}
 		</motion.p>

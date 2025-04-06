@@ -14,6 +14,7 @@ import {
 	SheetTrigger,
 } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
+import { type NavLinks, navLinks } from "@/components/constants";
 
 export default function Header() {
 	const path = usePathname();
@@ -70,7 +71,7 @@ function MobileNavigation() {
 				</div>
 
 				<div className="flex flex-col gap-[30px] px-5 mt-10">
-					<AuthLinkButtons />
+					<AuthLinkButtons type="mobile" />
 				</div>
 			</SheetContent>
 		</Sheet>
@@ -126,18 +127,4 @@ function AuthLinkButtons({
 			</Button>
 		</>
 	);
-}
-
-const navLinks: NavLinks[] = [
-	{ name: "Home", href: "/" },
-	{ name: "Careers", href: "/careers" },
-	{ name: "About", href: "/about" },
-	{ name: "Security", href: "/security" },
-	{ name: "Sign Up", href: "/sign-up" },
-	{ name: "Log In", href: "/log-in" },
-];
-
-interface NavLinks {
-	name: string;
-	href: string;
 }

@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 import clsx from "clsx";
+import { Separator } from "@/components/custom/separator";
 
 export default function FAQ() {
 	const [seeMoreFaqs, setSeeMoreFaqs] = useState<boolean>(false);
@@ -81,7 +82,7 @@ function FaqCard({ question, answer }: IFaq) {
 			<AnimatedBorderWrapper className="h-full p-[1px] rounded-[14px]">
 				<div className="h-full relative flex flex-col gap-[30px] p-[30px] md:p-10 xl:p-[50px] rounded-[14px] bg-black">
 					<p className="text-lg xl:text-xl font-medium">{question}</p>
-					<div className="w-full h-[1px] bg-grey-15" />
+					<Separator />
 					<p className="max-md:text-sm xl:text-lg text-grey-70 font-light">
 						{answer}
 					</p>
