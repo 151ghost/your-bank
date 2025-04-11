@@ -89,7 +89,7 @@ function MobileNavigation() {
 	return (
 		<Sheet>
 			<SheetTrigger className="flex lg:hidden">
-				<Menu color="var(--green-60)" />
+				<Menu color="var(--green-60)" size={40} />
 			</SheetTrigger>
 			<SheetContent>
 				<SheetHeader>
