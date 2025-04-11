@@ -10,7 +10,7 @@ export default function PingIconCtn({
 		<div className="relative size-16 md:size-[98px] flex items-center justify-center">
 			<div
 				className={clsx(
-					"max-md:hidden absolute size-[55px] rounded-full bg-[#CAFF33]/20 animate-ping",
+					"max-md:hidden absolute size-[55px] rounded-full bg-[#CAFF33]/20 animate-ping-slow",
 					{ "group-hover:animate-none": type === "use-cases" },
 				)}
 			/>

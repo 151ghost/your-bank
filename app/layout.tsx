@@ -29,9 +29,9 @@ export default function RootLayout({
 				<Image
 					src="/assets/vector1.png"
 					alt="Vector"
-					width={248}
-					height={200}
-					className="absolute -top-[50px] -left-1"
+					width={759}
+					height={610}
+					className="absolute -top-[60px] -left-[50px] max-xl:w-[547px] max-xl:h-[440px] max-md:w-[382px] max-md:h-[307px]"
 				/>
 
 				<Header />

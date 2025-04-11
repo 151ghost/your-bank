@@ -1,6 +1,6 @@
 "use client";
 
-import AnimatedBorderWrapper from "@/components/custom/animated-border-wrapper";
+import { BorderBeam } from "@/components/custom/border-beam";
 import PingIconCtn from "@/components/custom/ping-icon-ctn";
 import { Button } from "@/components/ui/button";
 import clsx from "clsx";
@@ -90,21 +90,21 @@ function UseCaseSections({ item }: { item: IUseCases }) {
 				/>
 
 				{item.advantages.map((advantage) => (
-					<AnimatedBorderWrapper
+					<div
 						key={advantage.caption}
-						className="flex flex-col items-center rounded-[12px] p-[1px] group"
+						className="relative w-full h-full flex flex-col items-center gap-3.5 py-5 px-3.5 md:p-6 bg-grey-10 rounded-[12px]"
 					>
-						<div className="relative w-full h-full flex flex-col items-center gap-3.5 py-5 px-3.5 md:p-6 bg-grey-10 rounded-[12px]">
-							<PingIconCtn
-								type="use-cases"
-								icon={advantage.icon}
-								alt={advantage.caption}
-							/>
-							<p className="text-center max-md:text-sm xl:text-xl">
-								{advantage.caption}
-							</p>
-						</div>
-					</AnimatedBorderWrapper>
+						<PingIconCtn
+							type="use-cases"
+							icon={advantage.icon}
+							alt={advantage.caption}
+						/>
+						<p className="text-center max-md:text-sm xl:text-xl">
+							{advantage.caption}
+						</p>
+
+						<BorderBeam size={125} delay={6} />
+					</div>
 				))}
 			</motion.div>
 

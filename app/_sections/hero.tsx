@@ -11,7 +11,7 @@ import {
 	fadeInVariants,
 	slideOutVariants,
 } from "@/components/animation";
-import AnimatedBorderWrapper from "@/components/custom/animated-border-wrapper";
+import { BorderBeam } from "@/components/custom/border-beam";
 
 export default function HeroSection() {
 	return (
@@ -19,7 +19,8 @@ export default function HeroSection() {
 			<div className="md:w-[80%] xl:max-w-1/2 xl:w-[649px] flex flex-col max-xl:items-center gap-[50px]">
 				<motion.div
 					initial="hidden"
-					animate="visible"
+					whileInView="visible"
+					viewport={{ once: true }}
 					variants={containerVariants}
 					className="flex flex-col max-xl:items-center gap-5"
 				>
@@ -67,7 +68,8 @@ export default function HeroSection() {
 
 			<motion.div
 				initial="hidden"
-				animate="visible"
+				whileInView="visible"
+				viewport={{ once: true }}
 				variants={containerVariants}
 				className="relative w-[90%] md:w-[410px]"
 			>
@@ -158,43 +160,37 @@ function DetailsBlock({
 function TransactionCard() {
 	return (
 		<motion.div variants={fadeInVariants}>
-			<AnimatedBorderWrapper className="w-full md:w-[410px] h-fit rounded-[10px] p-[1px]">
-				<div className="absolute w-full h-full inset-0 bg-[rgba(0,0,0,0.5)] rounded-[10px]" />
+			<div className="relative w-full max-md:h-[368px] flex flex-col gap-[26px] p-5 md:p-[35px] rounded-[10px] bg-[url(/assets/transaction-bg.png)] bg-black">
+				<div className="relative flex flex-col gap-[17px] z-10">
+					<p className="text-[10px] md:text-[17px] font-medium">
+						Your Transactions
+					</p>
 
-				<div className="relative w-full max-md:h-[368px] flex flex-col gap-[26px] p-5 md:p-[35px] rounded-[10px] bg-[url(/assets/transaction-bg.png)] bg-black">
-					<div className="relative flex flex-col gap-[17px] z-10">
-						<p className="text-[10px] md:text-[17px] font-medium">
-							Your Transactions
-						</p>
-
-						<div className="h-fit flex flex-col items-center">
-							{transactions.map((item, index) => (
-								<IndividualTransactions
-									key={item.name}
-									{...item}
-									index={index}
-								/>
-							))}
-						</div>
-					</div>
-
-					<div className="flex flex-col gap-[17px] z-10">
-						<p className="text-[10px] md:text-[17px] font-medium">
-							Money Exchange
-						</p>
-
-						<div className="w-full flex border border-grey-15 rounded-[10px]">
-							{money_exchange.map((item, index) => (
-								<MoneyExchangeCards
-									key={item.currency_shorthand}
-									{...item}
-									index={index}
-								/>
-							))}
-						</div>
+					<div className="h-fit flex flex-col items-center">
+						{transactions.map((item, index) => (
+							<IndividualTransactions key={item.name} {...item} index={index} />
+						))}
 					</div>
 				</div>
-			</AnimatedBorderWrapper>
+
+				<div className="flex flex-col gap-[17px] z-10">
+					<p className="text-[10px] md:text-[17px] font-medium">
+						Money Exchange
+					</p>
+
+					<div className="w-full flex border border-grey-15 rounded-[10px]">
+						{money_exchange.map((item, index) => (
+							<MoneyExchangeCards
+								key={item.currency_shorthand}
+								{...item}
+								index={index}
+							/>
+						))}
+					</div>
+				</div>
+
+				<BorderBeam size={300} />
+			</div>
 		</motion.div>
 	);
 }

@@ -15,7 +15,7 @@ import { useState } from "react";
 import clsx from "clsx";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import AnimatedBorderWrapper from "@/components/custom/animated-border-wrapper";
+import { BorderBeam } from "@/components/custom/border-beam";
 
 export default function OurFeatures() {
 	const [activeIndex, setActiveIndex] = useState<number>(0);
@@ -87,21 +87,21 @@ export default function OurFeatures() {
 function FeatureCard({ title, description }: IFearures) {
 	return (
 		<motion.div variants={fadeInUpVariants} className="w-full min-h-full">
-			<AnimatedBorderWrapper className="p-[1px] rounded-[10px] h-full">
-				<div className="relative h-full flex flex-col gap-6 md:gap-[30px] rounded-[10px] bg-grey-11 p-10 md:p-[50px] group">
-					<div className="flex items-center justify-between">
-						<p className="text-lg xl:text-[22px]">{title}</p>
+			<div className="relative h-full flex flex-col gap-6 md:gap-[30px] rounded-[10px] bg-grey-11 p-10 md:p-[50px] group">
+				<div className="flex items-center justify-between">
+					<p className="text-lg xl:text-[22px]">{title}</p>
 
-						<ArrowUpRight
-							size={34}
-							color="var(--green-60)"
-							className="group-hover:animate-bounce transition-transform"
-						/>
-					</div>
-
-					<p className="xl:text-lg font-light leading-[150%]">{description}</p>
+					<ArrowUpRight
+						size={34}
+						color="var(--green-60)"
+						className="group-hover:animate-bounce transition-transform"
+					/>
 				</div>
-			</AnimatedBorderWrapper>
+
+				<p className="xl:text-lg font-light leading-[150%]">{description}</p>
+
+				<BorderBeam size={225} duration={10} />
+			</div>
 		</motion.div>
 	);
 }

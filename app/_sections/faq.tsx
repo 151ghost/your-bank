@@ -10,7 +10,7 @@ import {
 	fadeInUpVariants,
 	slideInVariants,
 } from "@/components/animation";
-import AnimatedBorderWrapper from "@/components/custom/animated-border-wrapper";
+import { BorderBeam } from "@/components/custom/border-beam";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
@@ -79,15 +79,15 @@ function FaqCard({ question, answer }: IFaq) {
 			viewport={{ once: true }}
 			className="w-full"
 		>
-			<AnimatedBorderWrapper className="h-full p-[1px] rounded-[14px]">
-				<div className="h-full relative flex flex-col gap-[30px] p-[30px] md:p-10 xl:p-[50px] rounded-[14px] bg-black">
-					<p className="text-lg xl:text-xl font-medium">{question}</p>
-					<Separator />
-					<p className="max-md:text-sm xl:text-lg text-grey-70 font-light">
-						{answer}
-					</p>
-				</div>
-			</AnimatedBorderWrapper>
+			<div className="h-full relative flex flex-col gap-[30px] p-[30px] md:p-10 xl:p-[50px] rounded-[14px] bg-black">
+				<p className="text-lg xl:text-xl font-medium">{question}</p>
+				<Separator />
+				<p className="max-md:text-sm xl:text-lg text-grey-70 font-light">
+					{answer}
+				</p>
+
+				<BorderBeam size={225} />
+			</div>
 		</motion.div>
 	);
 }

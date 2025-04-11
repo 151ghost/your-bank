@@ -78,7 +78,7 @@ export default function Footer() {
 						variants={fadeInVariants}
 						className="text-sm xl:text-lg font-light text-grey-70"
 					>
-						YourBank All Rights Reserved
+						YourBanK All Rights Reserved
 					</motion.p>
 
 					<motion.div
