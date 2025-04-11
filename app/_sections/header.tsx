@@ -123,7 +123,7 @@ function MobileNavigation() {
 
 function NavButton({ isActive, item }: { isActive: boolean; item: NavLinks }) {
 	return (
-		<motion.div variants={fadeInUpVariants} className="w-fit h-fit">
+		<motion.div variants={fadeInUpVariants} className="w-full md:w-fit h-fit">
 			<Button
 				key={item.name}
 				asChild
@@ -148,7 +148,7 @@ function AuthLinkButtons({
 		<>
 			<motion.div
 				variants={type === "mobile" ? fadeInUpVariants : slideInVariants}
-				className="w-fit h-fit"
+				className="w-full md:w-fit h-fit"
 			>
 				<Button
 					asChild
@@ -167,7 +167,7 @@ function AuthLinkButtons({
 
 			<motion.div
 				variants={type === "mobile" ? fadeInUpVariants : slideInVariants}
-				className="w-fit h-fit"
+				className="w-full md:w-fit h-fit"
 			>
 				<Button
 					variant="green"
