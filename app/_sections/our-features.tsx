@@ -5,17 +5,14 @@ import {
 	SectionDescription,
 	SectionTitle,
 } from "@/components/custom/section-details";
-import {
-	containerVariants,
-	fadeInUpVariants,
-	slideInVariants,
-} from "@/components/animation";
+import { containerVariants, slideInVariants } from "@/components/animation";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import clsx from "clsx";
-import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 import { ArrowUpRight } from "lucide-react";
-import { BorderBeam } from "@/components/custom/border-beam";
+import { BorderBeam } from "@/components/magicui/border-beam";
+import { FadeInUpElement } from "@/components/animation/fade-in-up-variant";
+import { ContainerVariantElement } from "@/components/animation/container-variant";
 
 export default function OurFeatures() {
 	const [activeIndex, setActiveIndex] = useState<number>(0);
@@ -38,20 +35,14 @@ export default function OurFeatures() {
 			</SectionDetailsContainer>
 
 			<div className="flex max-lg:flex-col gap-5">
-				<motion.div
-					initial="hidden"
-					whileInView="visible"
-					viewport={{ once: true }}
-					variants={fadeInUpVariants}
-					className="lg:max-w-[308px] lg:w-full max-h-fit flex lg:flex-col p-5 lg:p-10 xl:p-[50px] rounded-[10px] gap-5 bg-grey-11 overflow-x-auto scrollbar-none"
-				>
+				<FadeInUpElement className="lg:max-w-[308px] lg:w-full max-h-fit flex lg:flex-col p-5 lg:p-10 xl:p-[50px] rounded-[10px] gap-5 bg-grey-11 overflow-x-auto scrollbar-none">
 					{["Online Banking", "Financial Tools", "Customer Support"].map(
 						(item, index) => (
 							<Button
 								key={item}
 								variant="outline"
 								onClick={() => setActiveIndex(index)}
-								className={clsx(
+								className={cn(
 									"border-grey-15 xl:text-lg py-3.5 px-5 xl:py-[18px] xl:px-6 rounded-full",
 									{
 										"bg-grey-10 hover:bg-grey-10 text-green-60 hover:text-green-60":
@@ -65,20 +56,16 @@ export default function OurFeatures() {
 							</Button>
 						),
 					)}
-				</motion.div>
+				</FadeInUpElement>
 
-				<motion.div
+				<ContainerVariantElement
 					key={activeIndex}
-					initial="hidden"
-					whileInView="visible"
-					viewport={{ once: true }}
-					variants={containerVariants}
 					className="grid md:grid-cols-2 gap-5"
 				>
 					{featureCategory[activeIndex].map((item) => (
 						<FeatureCard key={item.title} {...item} />
 					))}
-				</motion.div>
+				</ContainerVariantElement>
 			</div>
 		</section>
 	);
@@ -86,23 +73,24 @@ export default function OurFeatures() {
 
 function FeatureCard({ title, description }: IFearures) {
 	return (
-		<motion.div variants={fadeInUpVariants} className="w-full min-h-full">
-			<div className="relative h-full flex flex-col gap-6 md:gap-[30px] rounded-[10px] bg-grey-11 p-10 md:p-[50px] group">
-				<div className="flex items-center justify-between">
-					<p className="text-lg xl:text-[22px]">{title}</p>
+		<FadeInUpElement
+			asChild
+			className="relative h-full flex flex-col gap-6 md:gap-[30px] rounded-[10px] bg-grey-11 p-10 md:p-[50px] group"
+		>
+			<div className="flex items-center justify-between">
+				<p className="text-lg xl:text-[22px]">{title}</p>
 
-					<ArrowUpRight
-						size={34}
-						color="var(--green-60)"
-						className="group-hover:animate-bounce transition-transform"
-					/>
-				</div>
-
-				<p className="xl:text-lg font-light leading-[150%]">{description}</p>
-
-				<BorderBeam size={225} duration={10} />
+				<ArrowUpRight
+					size={34}
+					color="var(--green-60)"
+					className="group-hover:animate-bounce transition-transform"
+				/>
 			</div>
-		</motion.div>
+
+			<p className="xl:text-lg font-light leading-[150%]">{description}</p>
+
+			<BorderBeam size={225} duration={10} />
+		</FadeInUpElement>
 	);
 }
 

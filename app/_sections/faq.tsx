@@ -5,18 +5,14 @@ import {
 	SectionTitle,
 	SectionDescription,
 } from "@/components/custom/section-details";
-import {
-	containerVariants,
-	fadeInUpVariants,
-	slideInVariants,
-} from "@/components/animation";
-import { BorderBeam } from "@/components/custom/border-beam";
-import { motion } from "framer-motion";
+import { containerVariants, slideInVariants } from "@/components/animation";
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
-import clsx from "clsx";
-import { Separator } from "@/components/custom/separator";
+import { FadeInUpElement } from "@/components/animation/fade-in-up-variant";
+import { BorderBeam } from "@/components/magicui/border-beam";
+import { cn } from "@/lib/utils";
+import { Separator } from "@/components/ui/separator";
 
 export default function FAQ() {
 	const [seeMoreFaqs, setSeeMoreFaqs] = useState<boolean>(false);
@@ -56,7 +52,7 @@ export default function FAQ() {
 						>
 							{seeMoreFaqs ? "See Less FAQs" : "Load All FAQs"}{" "}
 							<ChevronDown
-								className={clsx(
+								className={cn(
 									"transition-transform duration-300",
 									{ "rotate-180": seeMoreFaqs },
 									{ "rotate-0": !seeMoreFaqs },
@@ -72,23 +68,15 @@ export default function FAQ() {
 
 function FaqCard({ question, answer }: IFaq) {
 	return (
-		<motion.div
-			initial="hidden"
-			whileInView="visible"
-			variants={fadeInUpVariants}
-			viewport={{ once: true }}
-			className="w-full"
-		>
-			<div className="h-full relative flex flex-col gap-[30px] p-[30px] md:p-10 xl:p-[50px] rounded-[14px] bg-black">
-				<p className="text-lg xl:text-xl font-medium">{question}</p>
-				<Separator />
-				<p className="max-md:text-sm xl:text-lg text-grey-70 font-light">
-					{answer}
-				</p>
+		<FadeInUpElement className="w-full h-full relative flex flex-col gap-[30px] p-[30px] md:p-10 xl:p-[50px] rounded-[14px] bg-black">
+			<p className="text-lg xl:text-xl font-medium">{question}</p>
+			<Separator />
+			<p className="max-md:text-sm xl:text-lg text-grey-70 font-light">
+				{answer}
+			</p>
 
-				<BorderBeam size={225} />
-			</div>
-		</motion.div>
+			<BorderBeam size={225} />
+		</FadeInUpElement>
 	);
 }
 

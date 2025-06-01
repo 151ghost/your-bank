@@ -5,14 +5,9 @@ import {
 	SectionTitle,
 	SectionDescription,
 } from "@/components/custom/section-details";
-import {
-	containerVariants,
-	fadeInUpVariants,
-	slideInVariants,
-} from "@/components/animation";
+import { containerVariants, slideInVariants } from "@/components/animation";
 import { useState } from "react";
 import ToggleCase from "@/components/custom/toggle-case";
-import { Separator } from "@/components/custom/separator";
 import Image from "next/image";
 import {
 	Carousel,
@@ -21,7 +16,8 @@ import {
 	CarouselNext,
 	CarouselPrevious,
 } from "@/components/ui/carousel";
-import { motion } from "framer-motion";
+import { Separator } from "@/components/ui/separator";
+import { FadeInUpElement } from "@/components/animation/fade-in-up-variant";
 
 export default function Testimonial() {
 	const [activeIndex, setActiveIndex] = useState<number>(0);
@@ -34,7 +30,7 @@ export default function Testimonial() {
 					<SectionTitle
 						custom
 						variant={slideInVariants}
-						specialText="Features"
+						specialText="Testimonials"
 						defaultText="Our"
 					/>
 					<SectionDescription
@@ -75,13 +71,7 @@ function TestimonialCard({
 }: { testimony: string; user: string }) {
 	return (
 		<CarouselItem className="md:basis-1/2 lg:basis-1/3">
-			<motion.div
-				initial="hidden"
-				whileInView="visible"
-				viewport={{ once: true }}
-				variants={fadeInUpVariants}
-				className="flex flex-col items-center gap-10 xl:gap-[50px] max-md:border max-md:rounded-[12px] border-grey-15 max-md:p-5"
-			>
+			<FadeInUpElement className="flex flex-col items-center gap-10 xl:gap-[50px] max-md:border max-md:rounded-[12px] border-grey-15 max-md:p-5">
 				<div className="w-full flex items-center justify-center gap-5">
 					<Separator className="max-w-1/4 h-[1px] bg-grey-15" />
 					<Image
@@ -100,7 +90,7 @@ function TestimonialCard({
 				<p className="max-w-[90%] xl:text-lg font-medium text-green-60 text-center">
 					{user}
 				</p>
-			</motion.div>
+			</FadeInUpElement>
 		</CarouselItem>
 	);
 }

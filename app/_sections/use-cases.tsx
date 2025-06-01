@@ -1,9 +1,9 @@
 "use client";
 
-import { BorderBeam } from "@/components/custom/border-beam";
+import { BorderBeam } from "@/components/magicui/border-beam";
 import PingIconCtn from "@/components/custom/ping-icon-ctn";
 import { Button } from "@/components/ui/button";
-import clsx from "clsx";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 import {
 	motion,
@@ -20,16 +20,12 @@ import {
 	SectionDetailsContainer,
 	SectionTitle,
 } from "@/components/custom/section-details";
+import { ContainerVariantElement } from "@/components/animation/container-variant";
+import { SlideInElement } from "@/components/animation/slide-in-variant";
 
 export default function UseCases() {
 	return (
-		<motion.section
-			initial="hidden"
-			whileInView="visible"
-			viewport={{ once: true }}
-			variants={containerVariants}
-			className="container flex flex-col gap-[60px] py-[100px]"
-		>
+		<ContainerVariantElement className="container flex flex-col gap-[60px] py-[100px]">
 			<SectionDetailsContainer variant={containerVariants}>
 				<SectionTitle
 					specialText="Use Cases"
@@ -43,12 +39,13 @@ export default function UseCases() {
 					businesses alike, offering a wide range of financial solutions"
 				/>
 			</SectionDetailsContainer>
+
 			<div className="flex flex-col gap-10 xl:gap-[60px]">
 				{use_cases.map((item) => (
 					<UseCaseSections key={item.case} item={item} />
 				))}
 			</div>
-		</motion.section>
+		</ContainerVariantElement>
 	);
 }
 
@@ -66,19 +63,15 @@ function UseCaseSections({ item }: { item: IUseCases }) {
 
 	return (
 		<div
-			className={clsx(
+			className={cn(
 				"flex flex-col lg:flex-row gap-[30px] md:gap-[60px] xl:gap-[100px]",
 				{
 					"lg:flex-row-reverse": item.case === "Business",
 				},
 			)}
 		>
-			<motion.div
-				initial="hidden"
-				whileInView="visible"
+			<SlideInElement
 				custom={item.case === "Individual"}
-				variants={slideInVariants}
-				viewport={{ once: true }}
 				className="relative grid grid-cols-2 gap-2.5 xl:gap-5 p-5 md:p-10 rounded-[10px] bg-grey-11 overflow-hidden"
 			>
 				<Image
@@ -106,16 +99,10 @@ function UseCaseSections({ item }: { item: IUseCases }) {
 						<BorderBeam size={125} delay={6} />
 					</div>
 				))}
-			</motion.div>
+			</SlideInElement>
 
 			<div className="max-w-full lg:max-w-1/2 flex flex-col max-md:items-center gap-[50px]">
-				<motion.div
-					initial="hidden"
-					whileInView="visible"
-					viewport={{ once: true }}
-					variants={containerVariants}
-					className="flex flex-col max-md:items-center gap-2.5"
-				>
+				<ContainerVariantElement className="flex flex-col max-md:items-center gap-2.5">
 					<motion.p
 						custom={item.case === "Business"}
 						variants={slideInVariants}
@@ -130,15 +117,9 @@ function UseCaseSections({ item }: { item: IUseCases }) {
 					>
 						{item.description}
 					</motion.p>
-				</motion.div>
+				</ContainerVariantElement>
 
-				<motion.div
-					initial="hidden"
-					whileInView="visible"
-					viewport={{ once: true }}
-					variants={containerVariants}
-					className="grid md:grid-cols-3 gap-[30px] md:gap-[40px] lg:gap-[50px]"
-				>
+				<ContainerVariantElement className="grid md:grid-cols-3 gap-[30px] md:gap-[40px] lg:gap-[50px]">
 					{item.numeric_data.map((data) => (
 						<IndividualNumericData
 							key={data.description}
@@ -146,16 +127,9 @@ function UseCaseSections({ item }: { item: IUseCases }) {
 							item_case={item.case}
 						/>
 					))}
-				</motion.div>
+				</ContainerVariantElement>
 
-				<motion.div
-					initial="hidden"
-					whileInView="visible"
-					viewport={{ once: true }}
-					custom={item.case === "Business"}
-					variants={slideInVariants}
-					className="w-fit"
-				>
+				<SlideInElement custom={item.case === "Business"} className="w-fit">
 					<Button
 						asChild
 						variant="outline"
@@ -163,7 +137,7 @@ function UseCaseSections({ item }: { item: IUseCases }) {
 					>
 						<Link href="/">Learn More</Link>
 					</Button>
-				</motion.div>
+				</SlideInElement>
 			</div>
 		</div>
 	);
@@ -193,10 +167,9 @@ function IndividualNumericData({
 	}, [isInView, percentageCount, data.percentage]);
 
 	return (
-		<motion.div
+		<SlideInElement
 			ref={ref}
 			custom={item_case === "Business"}
-			variants={slideInVariants}
 			key={data.description}
 			className="flex flex-col max-md:items-center gap-[5px]"
 		>
@@ -206,7 +179,7 @@ function IndividualNumericData({
 			<p className="max-md:text-sm font-light text-grey-70 text-[15px] xl:text-lg">
 				{data.description}
 			</p>
-		</motion.div>
+		</SlideInElement>
 	);
 }
 

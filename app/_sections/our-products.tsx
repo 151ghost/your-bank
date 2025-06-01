@@ -14,6 +14,7 @@ import {
 	SectionTitle,
 } from "@/components/custom/section-details";
 import ToggleCase from "@/components/custom/toggle-case";
+import { ContainerVariantElement } from "@/components/animation/container-variant";
 
 export default function OurProducts() {
 	const [activeIndex, setActiveIndex] = useState(0);
@@ -41,18 +42,11 @@ export default function OurProducts() {
 				<ToggleCase activeIndex={activeIndex} setActiveIndex={setActiveIndex} />
 			</div>
 
-			<motion.div
-				key={activeIndex}
-				initial="hidden"
-				whileInView="visible"
-				viewport={{ once: true }}
-				variants={containerVariants}
-				className="grid md:grid-cols-2 lg:grid-cols-3 gap-[50px]"
-			>
+			<ContainerVariantElement className="grid md:grid-cols-2 lg:grid-cols-3 gap-[50px]">
 				{useCases[activeIndex].map((item, index) => (
 					<ProductCard key={item.title} {...item} index={index} />
 				))}
-			</motion.div>
+			</ContainerVariantElement>
 		</section>
 	);
 }

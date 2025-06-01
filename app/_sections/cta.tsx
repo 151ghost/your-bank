@@ -1,6 +1,6 @@
 "use client";
 
-import { BorderBeam } from "@/components/custom/border-beam";
+import { BorderBeam } from "@/components/magicui/border-beam";
 import {
 	SectionDescription,
 	SectionDetailsContainer,
@@ -9,7 +9,7 @@ import {
 import { containerVariants, slideInVariants } from "@/components/animation";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { SlideInElement } from "@/components/animation/slide-in-variant";
 
 export default function CtaSection() {
 	return (
@@ -39,20 +39,14 @@ export default function CtaSection() {
 					/>
 				</SectionDetailsContainer>
 
-				<motion.div
-					initial="hidden"
-					whileInView="visible"
-					viewport={{ once: true }}
-					variants={slideInVariants}
-					className="w-fit h-fit"
-				>
+				<SlideInElement className="w-fit h-fit">
 					<Button
 						variant="green"
 						className="md:h-[49px] xl:h-[63px] py-3.5 px-5 xl:py-[18px] xl:px-[30px] rounded-full text-sm xl:text-lg text-grey-11"
 					>
 						Open Account
 					</Button>
-				</motion.div>
+				</SlideInElement>
 
 				<BorderBeam size={150} duration={20} />
 			</div>

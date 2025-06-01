@@ -3,38 +3,30 @@
 import { ArrowLeftRight, BadgeCheck, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import clsx from "clsx";
-import { motion } from "framer-motion";
-import {
-	containerVariants,
-	fadeInUpVariants,
-	fadeInVariants,
-	slideOutVariants,
-} from "@/components/animation";
-import { BorderBeam } from "@/components/custom/border-beam";
+import { ContainerVariantElement } from "@/components/animation/container-variant";
+import { FadeInUpElement } from "@/components/animation/fade-in-up-variant";
+import { SlideOutElement } from "@/components/animation/slide-out-variant";
+import { FadeInElement } from "@/components/animation/fade-in-variant";
+import { cn } from "@/lib/utils";
+import { BorderBeam } from "@/components/magicui/border-beam";
 
 export default function HeroSection() {
 	return (
 		<section className="container flex max-xl:flex-col items-center justify-center gap-[100px] gap-y-[120px] py-[100px]">
 			<div className="md:w-[80%] xl:max-w-1/2 xl:w-[649px] flex flex-col max-xl:items-center gap-[50px]">
-				<motion.div
-					initial="hidden"
-					whileInView="visible"
-					viewport={{ once: true }}
-					variants={containerVariants}
-					className="flex flex-col max-xl:items-center gap-5"
-				>
-					<motion.div
-						variants={fadeInUpVariants}
+				<ContainerVariantElement className="flex flex-col max-xl:items-center gap-5">
+					<FadeInUpElement
+						asChild
 						className="w-fit flex items-center gap-1.5 py-2.5 px-5 bg-grey-15 rounded-full"
 					>
 						<BadgeCheck color="var(--green-60)" className="size-5 xl:size-6" />
 						<span className="text-xs md:text-sm xl:text-lg font-light">
 							No LLC Required, No Credit Check.
 						</span>
-					</motion.div>
-					<motion.div
-						variants={fadeInUpVariants}
+					</FadeInUpElement>
+
+					<FadeInUpElement
+						asChild
 						className="flex flex-col max-md:items-center gap-3.5"
 					>
 						<p className="max-xl:text-center text-[28px] md:text-[38px] xl:text-5xl font-medium leading-[150%]">
@@ -48,34 +40,22 @@ export default function HeroSection() {
 							financial goals. We are committed to delivering personalized and
 							innovative services that prioritize our customers&apos; needs.
 						</p>
-					</motion.div>
-				</motion.div>
+					</FadeInUpElement>
+				</ContainerVariantElement>
 
-				<motion.div
-					initial="hidden"
-					whileInView="visible"
-					viewport={{ once: true }}
-					variants={fadeInUpVariants}
-				>
+				<FadeInUpElement asChild className="w-fit">
 					<Button
 						variant="green"
 						className="w-fit py-[18px] px-[30px] h-[49px] md:h-[63px] max-md:text-sm"
 					>
 						Open Account
 					</Button>
-				</motion.div>
+				</FadeInUpElement>
 			</div>
 
-			<motion.div
-				initial="hidden"
-				whileInView="visible"
-				viewport={{ once: true }}
-				variants={containerVariants}
-				className="relative w-[90%] md:w-[410px]"
-			>
-				<motion.div
-					variants={slideOutVariants}
-					custom={true}
+			<ContainerVariantElement className="relative w-[90%] md:w-[410px]">
+				<SlideOutElement
+					asChild
 					className="absolute z-20 -left-3 md:-left-[50px] -top-[25px] md:-top-[40px]"
 				>
 					<DetailsBlock
@@ -90,10 +70,11 @@ export default function HeroSection() {
 						title="+ $5000,00"
 						description="Monthly Income"
 					/>
-				</motion.div>
+				</SlideOutElement>
 
-				<motion.div
-					variants={slideOutVariants}
+				<SlideOutElement
+					asChild
+					custom={false}
 					className="absolute -top-[30px] -right-[15px] md:-right-[75px] md:-top-[45px] overflow-x-hidden"
 				>
 					<Image
@@ -103,12 +84,12 @@ export default function HeroSection() {
 						height={383}
 						className="max-md:w-[220px] max-md:h-[201px]"
 					/>
-				</motion.div>
+				</SlideOutElement>
 
 				<TransactionCard />
 
 				<SupportedCurrencies />
-			</motion.div>
+			</ContainerVariantElement>
 		</section>
 	);
 }
@@ -128,7 +109,7 @@ function DetailsBlock({
 }) {
 	return (
 		<div
-			className={clsx(`flex items-center gap-2 ${className}`, {
+			className={cn(`flex items-center gap-2 ${className}`, {
 				"px-2.5 md:px-[17px] py-2 md:py-3.5": type === "monthly-income",
 			})}
 		>
@@ -136,7 +117,7 @@ function DetailsBlock({
 
 			<div className="flex flex-col gap-[1px]">
 				<p
-					className={clsx({
+					className={cn({
 						"max-md:text-[10px] text-[17px]": type === "monthly-income",
 						"max-md:text-[9px] font-light": type === "transaction",
 					})}
@@ -144,7 +125,7 @@ function DetailsBlock({
 					{title}
 				</p>
 				<p
-					className={clsx({
+					className={cn({
 						"text-[8px] md:text-sm text-white-90 font-light":
 							type === "monthly-income",
 						"max-md:text-[10px] text-[17px]": type === "transaction",
@@ -159,7 +140,7 @@ function DetailsBlock({
 
 function TransactionCard() {
 	return (
-		<motion.div variants={fadeInVariants}>
+		<FadeInElement asChild>
 			<div className="relative w-full max-md:h-[368px] flex flex-col gap-[26px] p-5 md:p-[35px] rounded-[10px] bg-[url(/assets/transaction-bg.png)] bg-black">
 				<div className="relative flex flex-col gap-[17px] z-10">
 					<p className="text-[10px] md:text-[17px] font-medium">
@@ -191,7 +172,7 @@ function TransactionCard() {
 
 				<BorderBeam size={300} />
 			</div>
-		</motion.div>
+		</FadeInElement>
 	);
 }
 
@@ -202,7 +183,7 @@ function IndividualTransactions({
 }: IndividualTransactionProps) {
 	return (
 		<div
-			className={clsx(
+			className={cn(
 				"flex items-center justify-between bg-grey-11 py-2 md:py-3.5 px-3 md:px-[21px] border border-grey-15 rounded-[10px]",
 				{ "w-full z-30": index === 0 },
 				{ "w-[90%] z-20 -mt-[28px] opacity-50": index === 1 },
@@ -238,7 +219,7 @@ function MoneyExchangeCards({
 	return (
 		<div className="w-1/2 flex flex-col">
 			<div
-				className={clsx(
+				className={cn(
 					"flex flex-col gap-[9px] p-[17px] border-b border-grey-11",
 					{
 						"border-r": index === 0,
@@ -262,7 +243,7 @@ function MoneyExchangeCards({
 				</p>
 			</div>
 			<p
-				className={clsx(
+				className={cn(
 					"text-[10px] md:text-[17px] font-medium py-[26px] px-[17px] gap-[9px] border-grey-11",
 					{
 						"border-r": index === 0,
@@ -277,10 +258,7 @@ function MoneyExchangeCards({
 
 function SupportedCurrencies() {
 	return (
-		<motion.div
-			variants={fadeInUpVariants}
-			className="w-fit flex items-center gap-3 py-[5px] md:py-[9px] pl-3 md:pl-5 pr-[5px] md:pr-[9px] rounded-full bg-[#22251B] mt-5 ml-auto md:-mr-10"
-		>
+		<FadeInUpElement className="w-fit flex items-center gap-3 py-[5px] md:py-[9px] pl-3 md:pl-5 pr-[5px] md:pr-[9px] rounded-full bg-[#22251B] mt-5 ml-auto md:-mr-10">
 			<p className="max-md:text-[9px]">Supported Currencies</p>
 
 			<div className="w-fit flex bg-grey-10 gap-[7px] p-[9px] rounded-full">
@@ -295,7 +273,7 @@ function SupportedCurrencies() {
 					/>
 				))}
 			</div>
-		</motion.div>
+		</FadeInUpElement>
 	);
 }
 
