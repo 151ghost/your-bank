@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Lexend } from "next/font/google";
 import "./globals.css";
 import Header from "./_sections/header";
-import Image from "next/image";
 import Footer from "./_sections/footer";
 
 const lexend = Lexend({
