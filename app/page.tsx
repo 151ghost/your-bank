@@ -1,12 +1,8 @@
 import dynamic from "next/dynamic";
+import Image from "next/image";
 
-// import CtaSection from "./_sections/cta";
-// import FAQ from "./_sections/faq";
 import HeroSection from "./_sections/hero";
-// import OurFeatures from "./_sections/our-features";
 import OurProducts from "./_sections/our-products";
-// import Testimonial from "./_sections/testimonial";
-// import UseCases from "./_sections/use-cases";
 
 const UseCasesSection = dynamic(() => import("./_sections/use-cases"));
 const OurFeaturesSection = dynamic(() => import("./_sections/our-features"));
@@ -17,6 +13,14 @@ const CTASection = dynamic(() => import("./_sections/cta"));
 export default function Home() {
 	return (
 		<>
+			<Image
+				src="/assets/vector1.png"
+				alt="Vector"
+				width={759}
+				height={610}
+				className="absolute -top-[60px] -left-[50px] max-xl:w-[547px] max-xl:h-[440px] max-md:w-[382px] max-md:h-[307px]"
+			/>
+
 			<HeroSection />
 
 			<OurProducts />

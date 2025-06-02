@@ -47,7 +47,7 @@ export default function Footer() {
 
 				<Separator />
 
-				<div className="w-full flex max-md:flex-col max-md:gap-5 items-center justify-between py-4 px-[30px] bg-grey-10 rounded-[12px] md:rounded-full border border-grey-15">
+				<div className="max-w-[1536px] w-full flex max-md:flex-col max-md:gap-5 items-center justify-between py-4 px-[30px] bg-grey-10 rounded-[12px] md:rounded-full border border-grey-15">
 					<motion.p
 						initial="hidden"
 						whileInView="visible"

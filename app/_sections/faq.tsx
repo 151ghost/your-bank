@@ -18,7 +18,7 @@ export default function FAQ() {
 	const [seeMoreFaqs, setSeeMoreFaqs] = useState<boolean>(false);
 
 	return (
-		<section className="container  flex flex-col gap-[60px] py-[100px]">
+		<section className="container flex flex-col gap-[60px] py-[100px]">
 			<SectionDetailsContainer variant={containerVariants}>
 				<SectionTitle
 					custom

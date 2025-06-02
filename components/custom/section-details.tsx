@@ -25,6 +25,7 @@ export function SectionTitle({
 	variant,
 	defaultText,
 	specialText,
+	extraText,
 	custom = false,
 	faq = false,
 	cta = false,
@@ -33,6 +34,7 @@ export function SectionTitle({
 	custom?: boolean;
 	defaultText?: string;
 	specialText?: string;
+	extraText?: string;
 	faq?: boolean;
 	cta?: boolean;
 }) {
@@ -42,14 +44,15 @@ export function SectionTitle({
 			custom={custom}
 			className={clsx("max-md:text-center font-medium leading-[150%]", {
 				"text-green-60": faq,
-				"xtext-2xl md:text-[30px] xl:text-[40px]": cta,
+				"text-2xl md:text-[30px] xl:text-[40px]": cta,
 				"text-[28px] md:text-[38px] xl:text-5xl": !cta,
 			})}
 		>
 			{defaultText}{" "}
 			<span className={faq ? "text-white" : "text-green-60"}>
 				{specialText}
-			</span>
+			</span>{" "}
+			{extraText}
 		</motion.p>
 	);
 }
@@ -65,7 +68,7 @@ export function SectionDescription({
 			variants={variant}
 			custom={custom}
 			className={clsx(
-				"max-md:text-sm xl:text-lg max-md:text-center font-light grey-70 leading-[150%]",
+				"max-md:text-sm xl:text-lg max-md:text-center font-light text-grey-70 leading-[150%]",
 				{ "max-w-[95%] md:max-w-[80%]": cta },
 				{ "max-w-[90%] md:max-w-[80%]": !cta },
 			)}

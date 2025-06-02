@@ -26,14 +26,6 @@ export default function RootLayout({
 			<body
 				className={`${lexend.variable} antialiased relative overflow-x-hidden`}
 			>
-				<Image
-					src="/assets/vector1.png"
-					alt="Vector"
-					width={759}
-					height={610}
-					className="absolute -top-[60px] -left-[50px] max-xl:w-[547px] max-xl:h-[440px] max-md:w-[382px] max-md:h-[307px]"
-				/>
-
 				<Header />
 
 				<main className="w-full flex flex-col items-center">{children}</main>
