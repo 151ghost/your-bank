@@ -40,7 +40,9 @@ function OurBenefitCard({ item }: { item: IBenefitProps }) {
 	return (
 		<FadeInUpElement className="relative flex flex-col gap-[30px] p-[50px] rounded-tl-[50px] rounded-br-[50px] rounded-tr-[20px] rounded-bl-[30px] outline-1 outline-[#1c1c1c] bg-[url(/assets/transaction-bg.png)]">
 			<div className="flex items-center gap-5">
-				<PingIconCtn icon={item.icon} alt={item.alt} />
+				<div className="w-fit h-fit bg-black">
+					<PingIconCtn icon={item.icon} alt={item.alt} />
+				</div>
 				<p className="text-white text-2xl leading-[150%]">{item.title}</p>
 			</div>
 
