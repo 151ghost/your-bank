@@ -10,7 +10,7 @@ const lexend = Lexend({
 });
 
 export const metadata: Metadata = {
-	title: "YourBanK",
+	title: { default: "YourBanK", template: "%s | YourBank" },
 	description:
 		"Your trusted banking partner for secure and convenient financial services",
 	icons: {

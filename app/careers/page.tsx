@@ -12,6 +12,10 @@ const JobOpeningsSection = dynamic(
 	() => import("../careers/sections/job-openings"),
 );
 
+export const metadata = {
+	title: "Careers",
+};
+
 export default function CareersPage() {
 	return (
 		<>
