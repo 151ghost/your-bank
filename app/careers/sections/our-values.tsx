@@ -5,10 +5,11 @@ import {
 	SectionTitle,
 } from "@/components/custom/section-details";
 import { FadeInUpElement } from "@/components/animation/fade-in-up-variant";
+import { SectionContainer } from "@/components/custom/section-container";
 
 export default function OurValuesSection() {
 	return (
-		<section className="container flex flex-col 2xl:gap-20 gap-[60px] py-[100px]">
+		<SectionContainer>
 			<SectionDetailsContainer variant={containerVariants} className="gap-3.5">
 				<SectionTitle
 					variant={fadeInVariants}
@@ -26,7 +27,7 @@ export default function OurValuesSection() {
 					<OurValuesCard key={item.value} {...item} />
 				))}
 			</div>
-		</section>
+		</SectionContainer>
 	);
 }
 

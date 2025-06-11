@@ -9,10 +9,11 @@ import {
 import { FadeInUpElement } from "@/components/animation/fade-in-up-variant";
 import { BorderBeam } from "@/components/magicui/border-beam";
 import PingIconCtn from "@/components/custom/ping-icon-ctn";
+import { SectionContainer } from "@/components/custom/section-container";
 
 export default function OurBenefitSection() {
 	return (
-		<section className="container flex flex-col 2xl:gap-20 gap-[60px] py-[100px]">
+		<SectionContainer>
 			<SectionDetailsContainer variant={containerVariants} className="gap-3.5">
 				<SectionTitle
 					variant={slideInVariants}
@@ -32,7 +33,7 @@ export default function OurBenefitSection() {
 					<OurBenefitCard key={item.title} item={item} />
 				))}
 			</div>
-		</section>
+		</SectionContainer>
 	);
 }
 
