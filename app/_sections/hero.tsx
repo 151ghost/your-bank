@@ -148,7 +148,7 @@ function TransactionCard() {
 	return (
 		<FadeInElement
 			asChild
-			className="relative w-full max-md:h-[368px] flex flex-col 2xl:gap-[26px] md:gap-5 2xl:p-[34px] md:p-[27px] rounded-[8px] bg-[url(/assets/transaction-bg.png)] bg-black"
+			className="relative w-full max-md:h-[368px] flex flex-col 2xl:gap-[26px] md:gap-5 2xl:p-[34px] md:p-[27px] p-5 rounded-[8px] bg-[url(/assets/transaction-bg.png)] bg-black"
 		>
 			<div className="relative flex flex-col gap-[17px] z-10">
 				<p className="text-[10px] md:text-sm 2xl:text-[17px] font-medium">

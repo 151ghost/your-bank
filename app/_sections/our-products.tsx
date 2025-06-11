@@ -43,7 +43,10 @@ export default function OurProducts() {
 				<ToggleCase activeIndex={activeIndex} setActiveIndex={setActiveIndex} />
 			</div>
 
-			<ContainerVariantElement className="grid md:grid-cols-2 lg:grid-cols-3 gap-[30px] md:gap-10 2xl:gap-[50px]">
+			<ContainerVariantElement
+				key={activeIndex}
+				className="grid md:grid-cols-2 lg:grid-cols-3 gap-[30px] md:gap-10 2xl:gap-[50px]"
+			>
 				{useCases[activeIndex].map((item, index) => (
 					<ProductCard key={item.title} {...item} index={index} />
 				))}
