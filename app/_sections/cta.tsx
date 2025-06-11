@@ -14,7 +14,7 @@ import { SlideInElement } from "@/components/animation/slide-in-variant";
 export default function CtaSection() {
 	return (
 		<section className="py-[100px]">
-			<div className="container relative w-full flex flex-col md:flex-row items-center gap-6 md:gap-[150px] p-[30px] md;px-[60px] xl:p-20 rounded-[20px] bg-[url(/assets/transaction-bg.png)] bg-[#262626] overflow-hidden">
+			<div className="container relative w-full flex flex-col md:flex-row items-center gap-6 md:gap-[150px] p-[30px] md;px-[60px] xl:p-20 rounded-[20px] bg-[url(/assets/transaction-bg.png)] overflow-hidden">
 				<Image
 					src="/assets/vector1.png"
 					alt="Vector"
@@ -42,7 +42,7 @@ export default function CtaSection() {
 				<SlideInElement className="w-fit h-fit">
 					<Button
 						variant="green"
-						className="md:h-[49px] xl:h-[63px] py-3.5 px-5 xl:py-[18px] xl:px-[30px] rounded-full text-sm xl:text-lg text-grey-11"
+						className="py-3.5 px-5 2xl:py-[18px] 2xl:px-[30px] rounded-full text-sm 2xl:text-lg text-grey-11"
 					>
 						Open Account
 					</Button>

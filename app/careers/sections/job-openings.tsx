@@ -8,10 +8,11 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { FadeInUpElement } from "@/components/animation/fade-in-up-variant";
+import { SectionContainer } from "@/components/custom/section-container";
 
 export default function JobOpeningsSection() {
 	return (
-		<section className="container flex flex-col gap-[30px] py-[100px]">
+		<SectionContainer>
 			<SectionDetailsContainer variant={containerVariants} className="gap-3.5">
 				<SectionTitle
 					variant={fadeInUpVariants}
@@ -25,12 +26,12 @@ export default function JobOpeningsSection() {
 				/>
 			</SectionDetailsContainer>
 
-			<div className="grid grid-cols-2 gap-[30px]">
+			<div className="grid lg:grid-cols-2 2xl:gap-[30px] gap-5">
 				{jobs.map((item) => (
 					<JobCards key={item.title} {...item} />
 				))}
 			</div>
-		</section>
+		</SectionContainer>
 	);
 }
 
@@ -42,40 +43,44 @@ function JobCards({
 	requirements,
 }: IJobProps) {
 	return (
-		<FadeInUpElement className="w-full flex flex-col bg-grey-11 border border-grey-15 p-[50px] rounded-2xl gap-[50px]">
-			<div className="flex flex-col gap-3.5">
-				<p className="font-semibold text-[30px] leading-[150%] text-white">
+		<FadeInUpElement className="w-full flex flex-col bg-grey-11 border border-grey-15 2xl:p-[50px] md:p-10 p-6 rounded-2xl 2xl:gap-[50px] md:gap-10 gap-[30px]">
+			<div className="flex flex-col 2xl:gap-3.5 gap-2.5">
+				<p className="font-semibold 2xl:text-[30px] md:text-2xl leading-[150%] text-white">
 					{title}
 				</p>
 
-				<div className="flex items-center gap-2.5">
+				<div className="flex max-md:flex-col md:items-center 2xl:gap-2.5 gap-2">
 					<JobCardDescription
 						text={`Location: ${location}`}
-						className="py-2 px-4 border bg-grey-10 border-grey-15 rounded-full"
+						className="max-w-fit 2xl:py-2 2xl:px-4 md:py-2.5 md:px-3.5 py-1.5 px-2.5 border bg-grey-10 border-grey-15 rounded-full"
 					/>
 					<JobCardDescription
 						text={`Department: ${department}`}
-						className="py-2 px-4 border bg-grey-10 border-grey-15 rounded-full"
+						className="max-w-fit 2xl:py-2 2xl:px-4 md:py-2.5 md:px-3.5 py-1.5 px-2.5 border bg-grey-10 border-grey-15 rounded-full"
 					/>
 				</div>
 			</div>
 
-			<div className="flex flex-col gap-5">
+			<div className="flex flex-col 2xl:gap-5 md:gap-4 gap-2">
 				<JobCardHeader text="About This Job" />
 				<JobCardDescription text={about} />
 			</div>
 
-			<div className="flex flex-col gap-5">
+			<div className="flex flex-col 2xl:gap-5 md:gap-4 gap-2">
 				<JobCardHeader text="Requirements & Qualifications" />
 
-				<div className="flex flex-col gap-5">
+				<div className="flex flex-col 2xl:gap-5 md:gap-3.5">
 					{requirements.map((requirement) => (
-						<div key={requirement} className="flex items-center gap-2.5">
+						<div
+							key={requirement}
+							className="flex items-center 2xl:gap-2.5 gap-2"
+						>
 							<Image
 								src="/assets/careers/j1.png"
 								alt="Suit Case"
 								width={24}
 								height={24}
+								className="2xl:size-6 size-5"
 							/>
 							<JobCardDescription text={requirement} />
 						</div>
@@ -83,7 +88,10 @@ function JobCards({
 				</div>
 			</div>
 
-			<Button variant="green" className="py-4 px-[30px] font-medium">
+			<Button
+				variant="green"
+				className="2xl:py-4 2xl:px-[30px] md:py-3 md:px-5 md:text-sm 2xl:text-lg font-medium w-fit h-fit"
+			>
 				Apply Now
 			</Button>
 		</FadeInUpElement>
@@ -92,7 +100,9 @@ function JobCards({
 
 function JobCardHeader({ text }: { text: string }) {
 	return (
-		<p className="text-white text-2xl font-semibold leading-[150%]">{text}</p>
+		<p className="text-white 2xl:text-2xl md:text-xl font-semibold leading-[150%]">
+			{text}
+		</p>
 	);
 }
 
@@ -103,7 +113,7 @@ function JobCardDescription({
 	return (
 		<p
 			className={cn(
-				"text-lg font-light text-grey-70 leading-[150%]",
+				"2xl:text-lg md:text-base text-sm font-light text-grey-70 leading-[150%]",
 				className,
 			)}
 		>

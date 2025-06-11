@@ -12,7 +12,7 @@ import PingIconCtn from "@/components/custom/ping-icon-ctn";
 
 export default function OurBenefitSection() {
 	return (
-		<section className="container flex flex-col gap-[30px] py-[100px]">
+		<section className="container flex flex-col 2xl:gap-20 gap-[60px] py-[100px]">
 			<SectionDetailsContainer variant={containerVariants} className="gap-3.5">
 				<SectionTitle
 					variant={slideInVariants}
@@ -27,7 +27,7 @@ export default function OurBenefitSection() {
 				/>
 			</SectionDetailsContainer>
 
-			<div className="grid grid-cols-2 gap-[50px]">
+			<div className="grid md:grid-cols-2 2xl:gap-[50px] md:gap-[30px] gap-6">
 				{benefits.map((item) => (
 					<OurBenefitCard key={item.title} item={item} />
 				))}
@@ -38,15 +38,17 @@ export default function OurBenefitSection() {
 
 function OurBenefitCard({ item }: { item: IBenefitProps }) {
 	return (
-		<FadeInUpElement className="relative flex flex-col gap-[30px] p-[50px] rounded-tl-[50px] rounded-br-[50px] rounded-tr-[20px] rounded-bl-[30px] outline-1 outline-[#1c1c1c] bg-[url(/assets/transaction-bg.png)]">
-			<div className="flex items-center gap-5">
-				<div className="w-fit h-fit bg-black">
+		<FadeInUpElement className="relative flex flex-col 2xl:gap-[30px] md:gap-6 gap-5 2xl:p-[50px] md:p-10 p-6 rounded-tl-[50px] rounded-br-[50px] rounded-tr-[20px] rounded-bl-[30px] outline-1 outline-[#1c1c1c] bg-[url(/assets/transaction-bg.png)]">
+			<div className="flex items-center 2xl:gap-5 md:gap-3.5 gap-2.5">
+				<div className="w-fit h-fit bg-black rounded-full">
 					<PingIconCtn icon={item.icon} alt={item.alt} />
 				</div>
-				<p className="text-white text-2xl leading-[150%]">{item.title}</p>
+				<p className="text-white 2xl:text-2xl md:text-xl leading-[150%]">
+					{item.title}
+				</p>
 			</div>
 
-			<p className="text-lg text-grey-70 leading-[150%] font-light">
+			<p className="2xl:text-lg md:text-base text-grey-70 leading-[150%] font-light">
 				{item.details}
 			</p>
 

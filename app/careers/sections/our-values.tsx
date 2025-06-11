@@ -8,7 +8,7 @@ import { FadeInUpElement } from "@/components/animation/fade-in-up-variant";
 
 export default function OurValuesSection() {
 	return (
-		<section className="container flex flex-col gap-20 py-[100px]">
+		<section className="container flex flex-col 2xl:gap-20 gap-[60px] py-[100px]">
 			<SectionDetailsContainer variant={containerVariants} className="gap-3.5">
 				<SectionTitle
 					variant={fadeInVariants}
@@ -21,7 +21,7 @@ export default function OurValuesSection() {
 				/>
 			</SectionDetailsContainer>
 
-			<div className="grid grid-cols-2 gap-20">
+			<div className="grid md:grid-cols-2 2xl:gap-20 md:gap-[60px] gap-[50px]">
 				{value.map((item) => (
 					<OurValuesCard key={item.value} {...item} />
 				))}
@@ -32,11 +32,13 @@ export default function OurValuesSection() {
 
 function OurValuesCard({ value, description }: IValueProps) {
 	return (
-		<FadeInUpElement className="w-full flex flex-col gap-[30px] border-l border-green-60 pl-[30px]">
-			<p className="text-[58px] font-medium text-grey-30 leading-[150%]">
+		<FadeInUpElement className="w-full flex flex-col 2xl:gap-[30px] md:gap-5 gap-3.5 border-l border-green-60 2xl:pl-[30px] md:pl-6 pl-3.5">
+			<p className="2xl:text-[58px] md:text-[40px] text-[30px] font-medium text-grey-30 leading-[150%]">
 				{value}
 			</p>
-			<p className="text-lg font-light text-grey-70">{description}</p>
+			<p className="2xl:text-lg md:text-base text-sm font-light text-grey-70">
+				{description}
+			</p>
 		</FadeInUpElement>
 	);
 }

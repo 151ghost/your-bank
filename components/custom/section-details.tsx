@@ -1,7 +1,7 @@
 "use client";
 
-import clsx from "clsx";
 import { motion, type Variants } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 export function SectionDetailsContainer({
 	children,
@@ -14,7 +14,7 @@ export function SectionDetailsContainer({
 			whileInView="visible"
 			viewport={{ once: true }}
 			variants={variant}
-			className={`flex flex-col max-md:items-center gap-2.5 ${className}`}
+			className={`flex flex-col max-md:items-center 2xl:gap-3.5 gap-2.5 ${className}`}
 		>
 			{children}
 		</motion.div>
@@ -42,10 +42,10 @@ export function SectionTitle({
 		<motion.p
 			variants={variant}
 			custom={custom}
-			className={clsx("max-md:text-center font-medium leading-[150%]", {
+			className={cn("max-md:text-center font-medium leading-[150%]", {
 				"text-green-60": faq,
-				"text-2xl md:text-[30px] xl:text-[40px]": cta,
-				"text-[28px] md:text-[38px] xl:text-5xl": !cta,
+				"text-2xl md:text-[30px] 2xl:text-[40px]": cta,
+				"text-[28px] md:text-[38px] 2xl:text-5xl": !cta,
 			})}
 		>
 			{defaultText}{" "}
@@ -62,15 +62,23 @@ export function SectionDescription({
 	text,
 	cta = false,
 	custom = false,
-}: { variant: Variants; text?: string; cta?: boolean; custom?: boolean }) {
+	career_hero = false,
+}: {
+	variant: Variants;
+	text?: string;
+	cta?: boolean;
+	custom?: boolean;
+	career_hero?: boolean;
+}) {
 	return (
 		<motion.p
 			variants={variant}
 			custom={custom}
-			className={clsx(
-				"max-md:text-sm xl:text-lg max-md:text-center font-light text-grey-70 leading-[150%]",
+			className={cn(
+				"max-md:text-sm 2xl:text-lg max-md:text-center font-light text-grey-70 leading-[150%]",
 				{ "max-w-[95%] md:max-w-[80%]": cta },
-				{ "max-w-[90%] md:max-w-[80%]": !cta },
+				{ "max-w-[90%] md:max-w-[80%]": !cta && !career_hero },
+				{ "w-[95%] lg:w-[80%] max-lg:text-center": career_hero },
 			)}
 		>
 			{text}

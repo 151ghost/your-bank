@@ -13,12 +13,13 @@ import { FadeInUpElement } from "@/components/animation/fade-in-up-variant";
 import { BorderBeam } from "@/components/magicui/border-beam";
 import { cn } from "@/lib/utils";
 import { Separator } from "@/components/ui/separator";
+import { SectionContainer } from "@/components/custom/section-container";
 
 export default function FAQ() {
 	const [seeMoreFaqs, setSeeMoreFaqs] = useState<boolean>(false);
 
 	return (
-		<section className="container flex flex-col gap-[60px] py-[100px]">
+		<SectionContainer>
 			<SectionDetailsContainer variant={containerVariants}>
 				<SectionTitle
 					custom
@@ -35,7 +36,7 @@ export default function FAQ() {
 			</SectionDetailsContainer>
 
 			<div className="relative">
-				<div className="grid md:grid-cols-2 gap-5 xl:gap-[30px] relative">
+				<div className="grid md:grid-cols-2 gap-5 2xl:gap-[30px] relative">
 					{faqs.slice(0, seeMoreFaqs ? 6 : 4).map((item) => (
 						<FaqCard key={item.question} {...item} />
 					))}
@@ -48,7 +49,7 @@ export default function FAQ() {
 						<Button
 							variant="outline"
 							onClick={() => setSeeMoreFaqs(!seeMoreFaqs)}
-							className="md:w-[200px] border-grey-15 py-3.5 px-5 xl:py-[18px] xl:px-6 rounded-full text-sm xl:text-lg hover:bg-grey-10 hover:text-white"
+							className="md:w-fit border-grey-15 py-3.5 px-5 2xl:py-[18px] 2xl:px-6 rounded-full text-sm 2xl:text-lg hover:bg-grey-10 hover:text-white"
 						>
 							{seeMoreFaqs ? "See Less FAQs" : "Load All FAQs"}{" "}
 							<ChevronDown
@@ -62,16 +63,16 @@ export default function FAQ() {
 					</div>
 				</div>
 			</div>
-		</section>
+		</SectionContainer>
 	);
 }
 
 function FaqCard({ question, answer }: IFaq) {
 	return (
-		<FadeInUpElement className="w-full h-full relative flex flex-col gap-[30px] p-[30px] md:p-10 xl:p-[50px] rounded-[14px] bg-black">
-			<p className="text-lg xl:text-xl font-medium">{question}</p>
+		<FadeInUpElement className="w-full h-full relative flex flex-col 2xl:gap-[30px] md:gap-6 p-[30px] md:p-10 2xl:p-[50px] rounded-[14px] bg-black outline-1 outline-grey-15">
+			<p className="text-lg 2xl:text-xl font-medium">{question}</p>
 			<Separator />
-			<p className="max-md:text-sm xl:text-lg text-grey-70 font-light">
+			<p className="max-md:text-sm 2xl:text-lg text-grey-70 font-light">
 				{answer}
 			</p>
 
