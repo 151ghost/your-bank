@@ -26,7 +26,7 @@ export default function Header() {
 						alt="Logo"
 						width={156}
 						height={40}
-						className="w-[101px] h-[26px] md:w-[116px] mad:h-[30px] xl:w-[156px] xl:h-10"
+						className="w-[101px] h-[26px] md:w-[116px] mad:h-[30px] 2xlxl:w-[156px] 2xlxl:h-10"
 					/>
 				</SlideInElement>
 
@@ -55,7 +55,16 @@ function MobileNavigation() {
 
 	return (
 		<BaseSheet
-			trigger={<Menu color="var(--green-60)" size={40} />}
+			trigger={
+				<Button variant="green" className="py-1.5 px-3.5 mr-7">
+					<img
+						src="/assets/Icon.png"
+						alt="Hamburger menu icon"
+						width={28}
+						height={28}
+					/>
+				</Button>
+			}
 			title="Navigation Menu"
 			description="Browse through our website sections and access your account."
 		>
@@ -79,7 +88,7 @@ function NavButton({ isActive, item }: { isActive: boolean; item: NavLinks }) {
 				key={item.name}
 				asChild
 				className={cn(
-					"h-[51px] flex justify-start text-lg py-3 px-6 rounded-full",
+					"h-[51px] flex justify-start md:text-sm 2xl:text-lg 2xlpy-3 2xl:px-6 py-2.3 px-[18px] rounded-full",
 					{
 						"bg-grey-15 hover:bg-grey-15": isActive,
 						"bg-transparent hover:bg-grey-10": !isActive,
@@ -105,7 +114,7 @@ function AuthLinkButtons({
 					asChild
 					variant="ghost"
 					className={cn(
-						"h-[55px] text-lg bg-grey-10 lg:bg-transparent rounded-full hover:bg-grey-10 hover:text-white",
+						"h-[55px] text-sm 2xl:text-lg bg-grey-10 lg:bg-transparent rounded-full hover:bg-grey-10 hover:text-white",
 						{
 							"hidden md:flex": type === "desktop",
 							"flex md:hidden": type === "mobile",
@@ -123,10 +132,13 @@ function AuthLinkButtons({
 				<Button
 					variant="green"
 					asChild
-					className={cn("h-[55px] py-[14px] px-[30px] hover:bg-green-65", {
-						"hidden md:flex": type === "desktop",
-						"flex md:hidden": type === "mobile",
-					})}
+					className={cn(
+						"h-[55px] py-[14px] px-[30px] text-sm 2xl:text-lg hover:bg-green-65",
+						{
+							"hidden md:flex": type === "desktop",
+							"flex md:hidden": type === "mobile",
+						},
+					)}
 				>
 					<Link href={navLinks[5].href}>{navLinks[5].name}</Link>
 				</Button>

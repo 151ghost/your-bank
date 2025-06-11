@@ -8,8 +8,8 @@ import Image from "next/image";
 
 export default function CareerHeroSection() {
 	return (
-		<section className="relative container w-full bg-transparent lg:bg-grey-11 rounded-[20px] p-3.5 lg:p-10 2xl:p-[50px] mt-[53px] flex max-lg:flex-col-reverse items-center justify-end">
-			<SlideInElement className="max-sm:-mt-10 max-lg:-mt-[85px] lg:absolute z-10 top-[50px] md:left-0 xl:left-[50px] max-w-[750px] flex flex-col max-lg:items-center gap-[23px] bg-grey-10 p-3.5 lg:p-[60px] 2xl:p-20 lg:rounded-tl-[20px] rounded-[20px] lg:rounded-bl-[20px] lg:rounded-br-[80px]">
+		<section className="relative container w-full bg-grey-11 rounded-[20px] p-3.5 lg:p-10 2xl:p-[50px] mt-[53px] flex max-lg:flex-col-reverse items-center justify-end">
+			<SlideInElement className="max-sm:-mt-10 max-lg:-mt-[85px] lg:absolute z-10 top-[40px] md:left-0 xl:left-[50px] max-w-[750px] flex flex-col max-lg:items-center gap-[23px] bg-grey-10 p-3.5 lg:p-[60px] 2xl:p-20 lg:rounded-tl-[20px] rounded-[20px] lg:rounded-bl-[20px] lg:rounded-br-[80px]">
 				<SectionTitle
 					variant={fadeInVariants}
 					defaultText="Welcome to"

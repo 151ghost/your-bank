@@ -13,6 +13,9 @@ export const metadata: Metadata = {
 	title: "YourBanK",
 	description:
 		"Your trusted banking partner for secure and convenient financial services",
+	icons: {
+		icon: "/assets/shape-30.png",
+	},
 };
 
 export default function RootLayout({
