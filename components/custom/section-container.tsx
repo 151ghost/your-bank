@@ -7,7 +7,7 @@ export function SectionContainer({
 	return (
 		<section
 			className={cn(
-				"container flex flex-col 2xl:gap-20 gap-[60px] py-[100px]",
+				"container w-full flex flex-col 2xl:gap-20 gap-[60px] overflow-hidden",
 				className,
 			)}
 		>

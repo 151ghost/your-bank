@@ -69,7 +69,7 @@ function JobCards({
 			<div className="flex flex-col 2xl:gap-5 md:gap-4 gap-2">
 				<JobCardHeader text="Requirements & Qualifications" />
 
-				<div className="flex flex-col 2xl:gap-5 md:gap-3.5">
+				<div className="flex flex-col 2xl:gap-5 gap-3.5">
 					{requirements.map((requirement) => (
 						<div
 							key={requirement}

@@ -27,7 +27,9 @@ export default function RootLayout({
 			>
 				<Header />
 
-				<main className="w-full flex flex-col items-center">{children}</main>
+				<main className="w-full flex flex-col items-center 2xl:gap-[100px] md:gap-[70px] gap-10">
+					{children}
+				</main>
 
 				<Footer />
 			</body>
