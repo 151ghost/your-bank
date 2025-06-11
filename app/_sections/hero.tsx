@@ -1,5 +1,3 @@
-"use client";
-
 import { ArrowLeftRight, BadgeCheck, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -14,13 +12,13 @@ export default function HeroSection() {
 	return (
 		<section className="container flex max-xl:flex-col items-center justify-center gap-[100px] gap-y-[120px] py-[100px]">
 			<div className="md:w-[80%] xl:max-w-1/2 xl:w-[649px] flex flex-col max-xl:items-center gap-[50px]">
-				<ContainerVariantElement className="flex flex-col max-xl:items-center gap-5">
+				<ContainerVariantElement className="flex flex-col max-xl:items-center 2xl:gap-5 md:gap-4 gap-3">
 					<FadeInUpElement
 						asChild
-						className="w-fit flex items-center gap-1.5 py-2.5 px-5 bg-grey-15 rounded-full"
+						className="w-fit flex items-center gap-1.5 2xl:py-2.5 2xl:px-5 py-2 px-4 bg-grey-15 rounded-full"
 					>
-						<BadgeCheck color="var(--green-60)" className="size-5 xl:size-6" />
-						<span className="text-xs md:text-sm xl:text-lg font-light">
+						<BadgeCheck color="var(--green-60)" className="size-5 2xl:size-6" />
+						<span className="text-xs md:text-sm 2xl:text-lg font-light">
 							No LLC Required, No Credit Check.
 						</span>
 					</FadeInUpElement>
@@ -29,12 +27,12 @@ export default function HeroSection() {
 						asChild
 						className="flex flex-col max-md:items-center gap-3.5"
 					>
-						<p className="max-xl:text-center text-[28px] md:text-[38px] xl:text-5xl font-medium leading-[150%]">
+						<p className="max-xl:text-center text-[28px] md:text-[38px] 2xl:text-5xl font-medium leading-[150%]">
 							Welcome to YourBank Empowering Your{" "}
 							<span className="text-green-60">Financial Journey</span>
 						</p>
 
-						<p className="max-md:text-sm max-xl:text-center text-white-90 font-light">
+						<p className="max-md:text-sm max-xl:text-center 2xl:text-lg text-white-90 font-light">
 							At YourBank, our mission is to provide comprehensive banking
 							solutions that empower individuals and businesses to achieve their
 							financial goals. We are committed to delivering personalized and
@@ -46,7 +44,7 @@ export default function HeroSection() {
 				<FadeInUpElement asChild className="w-fit">
 					<Button
 						variant="green"
-						className="w-fit py-[18px] px-[30px] h-[49px] md:h-[63px] max-md:text-sm"
+						className="w-fit h-fit 2xl:py-[18px] 2xl:px-[30px] md:py-3.5 md:px-6 max-2xl:text-sm"
 					>
 						Open Account
 					</Button>
@@ -109,26 +107,34 @@ function DetailsBlock({
 }) {
 	return (
 		<div
-			className={cn(`flex items-center gap-2 ${className}`, {
-				"px-2.5 md:px-[17px] py-2 md:py-3.5": type === "monthly-income",
-			})}
+			className={cn(
+				`flex items-center 2xl:gap-2 md:gap-[7px] gap-[5px] ${className}`,
+				{
+					"2xl:px-[17px] 2xl:py-3.5 md:py-[11px] md:px-[13px] py-2 px-2.5":
+						type === "monthly-income",
+				},
+			)}
 		>
-			<div className="flex p-2 rounded-full bg-green-60">{icon}</div>
+			<div className="flex 2xl:p-2 md:p-[7px] p-[5px] rounded-full bg-green-60">
+				{icon}
+			</div>
 
 			<div className="flex flex-col gap-[1px]">
 				<p
 					className={cn({
-						"max-md:text-[10px] text-[17px]": type === "monthly-income",
-						"max-md:text-[9px] font-light": type === "transaction",
+						"max-md:text-[10px] 2xl:text-[17px] md:text-sm":
+							type === "monthly-income",
+						"text-[9px] md:text-xs 2xl:text-base font-light":
+							type === "transaction",
 					})}
 				>
 					{title}
 				</p>
 				<p
 					className={cn({
-						"text-[8px] md:text-sm text-white-90 font-light":
+						"text-[8px] 2xl:text-sm md:text-[11px] text-white-90 font-light":
 							type === "monthly-income",
-						"max-md:text-[10px] text-[17px]": type === "transaction",
+						"text-[10px] md:text-sm 2xl:text-[17px]": type === "transaction",
 					})}
 				>
 					{description}
@@ -140,38 +146,39 @@ function DetailsBlock({
 
 function TransactionCard() {
 	return (
-		<FadeInElement asChild>
-			<div className="relative w-full max-md:h-[368px] flex flex-col gap-[26px] p-5 md:p-[35px] rounded-[10px] bg-[url(/assets/transaction-bg.png)] bg-black">
-				<div className="relative flex flex-col gap-[17px] z-10">
-					<p className="text-[10px] md:text-[17px] font-medium">
-						Your Transactions
-					</p>
+		<FadeInElement
+			asChild
+			className="relative w-full max-md:h-[368px] flex flex-col 2xl:gap-[26px] md:gap-5 2xl:p-[34px] md:p-[27px] rounded-[8px] bg-[url(/assets/transaction-bg.png)] bg-black"
+		>
+			<div className="relative flex flex-col gap-[17px] z-10">
+				<p className="text-[10px] md:text-sm 2xl:text-[17px] font-medium">
+					Your Transactions
+				</p>
 
-					<div className="h-fit flex flex-col items-center">
-						{transactions.map((item, index) => (
-							<IndividualTransactions key={item.name} {...item} index={index} />
-						))}
-					</div>
+				<div className="h-fit flex flex-col items-center">
+					{transactions.map((item, index) => (
+						<IndividualTransactions key={item.name} {...item} index={index} />
+					))}
 				</div>
-
-				<div className="flex flex-col gap-[17px] z-10">
-					<p className="text-[10px] md:text-[17px] font-medium">
-						Money Exchange
-					</p>
-
-					<div className="w-full flex border border-grey-15 rounded-[10px]">
-						{money_exchange.map((item, index) => (
-							<MoneyExchangeCards
-								key={item.currency_shorthand}
-								{...item}
-								index={index}
-							/>
-						))}
-					</div>
-				</div>
-
-				<BorderBeam size={300} />
 			</div>
+
+			<div className="flex flex-col 2xl:gap-[25px] md:gap-5 gap-[15px] z-10">
+				<p className="text-[10px] md:text-sm 2xl:text-[17px] font-medium">
+					Money Exchange
+				</p>
+
+				<div className="w-full flex border border-grey-15 rounded-[10px]">
+					{money_exchange.map((item, index) => (
+						<MoneyExchangeCards
+							key={item.currency_shorthand}
+							{...item}
+							index={index}
+						/>
+					))}
+				</div>
+			</div>
+
+			<BorderBeam size={300} />
 		</FadeInElement>
 	);
 }
@@ -184,7 +191,7 @@ function IndividualTransactions({
 	return (
 		<div
 			className={cn(
-				"flex items-center justify-between bg-grey-11 py-2 md:py-3.5 px-3 md:px-[21px] border border-grey-15 rounded-[10px]",
+				"flex items-center justify-between bg-grey-11 py-3 px-3 md:py-[11px] md:px-[17px] 2xl:py-3.5 2xl:px-[21px] border border-grey-15 rounded-[10px]",
 				{ "w-full z-30": index === 0 },
 				{ "w-[90%] z-20 -mt-[28px] opacity-50": index === 1 },
 				{ "w-[80%] z-10 -mt-[28px] opacity-30": index === 2 },
@@ -196,14 +203,15 @@ function IndividualTransactions({
 					<ArrowLeftRight
 						size={21}
 						color="var(--grey-10)"
-						className="max-md:size-2.5"
+						className="size-3 md:size-4 2xl:size-[21px]"
 					/>
 				}
 				title="Transaction"
 				description={name}
+				className=""
 			/>
 
-			<p className="text-xs md:text-[21px] font-medium">-${amount}</p>
+			<p className="max-md:text-xs 2xl:text-[21px] font-medium">-${amount}</p>
 		</div>
 	);
 }
@@ -220,31 +228,33 @@ function MoneyExchangeCards({
 		<div className="w-1/2 flex flex-col">
 			<div
 				className={cn(
-					"flex flex-col gap-[9px] p-[17px] border-b border-grey-11",
+					"flex flex-col gap-[5px] md:gap-[7px] 2xl:gap-[9px] md:p-3.5 p-2.5 2xl:p-[17px] border-b border-grey-11",
 					{
 						"border-r": index === 0,
 					},
 				)}
 			>
-				<div className="flex items-center gap-[9px]">
+				<div className="flex items-center gap-[5px] md:gap-[7px] 2xl:gap-[9px]">
 					<Image
 						src={image}
 						alt={image_alt}
 						width={35}
 						height={35}
-						className="rounded-full md:min-h-[35px] max-md:size-[21px]"
+						className="rounded-full size-5 md:size-[27px] 2xl:size-[35px]"
 					/>
 
-					<p className="max-md:text-[9px]">{currency_shorthand}</p>
+					<p className="text-[9px] md:text-sx 2xl:text-base">
+						{currency_shorthand}
+					</p>
 				</div>
 
-				<p className="text-[8px] md:text-sm font-light text-white-90">
+				<p className="text-[8px] md:text-[11px] 2xl:text-sm font-light text-white-90">
 					{currency}
 				</p>
 			</div>
 			<p
 				className={cn(
-					"text-[10px] md:text-[17px] font-medium py-[26px] px-[17px] gap-[9px] border-grey-11",
+					"text-[10px] md:text-sm 2xl:text-[17px] font-medium 2xl:py-[26px] 2xl:px-[17px] md:py-5 md:px-3.5 py-[15px] px-2.5 border-grey-11",
 					{
 						"border-r": index === 0,
 					},
@@ -258,10 +268,12 @@ function MoneyExchangeCards({
 
 function SupportedCurrencies() {
 	return (
-		<FadeInUpElement className="w-fit flex items-center gap-3 py-[5px] md:py-[9px] pl-3 md:pl-5 pr-[5px] md:pr-[9px] rounded-full bg-[#22251B] mt-5 ml-auto md:-mr-10">
-			<p className="max-md:text-[9px]">Supported Currencies</p>
+		<FadeInUpElement className="w-fit flex items-center gap-3 py-[5px] pl-3 md:py-[7px] md:pr-4 2xl:p-2 2xl:pr-5 rounded-full bg-[#22251B] mt-5 ml-auto md:-mr-10">
+			<p className="text-[9px] md:text-xs 2xl:text-base">
+				Supported Currencies
+			</p>
 
-			<div className="w-fit flex bg-grey-10 gap-[7px] p-[9px] rounded-full">
+			<div className="w-fit flex bg-grey-10 gap-1 md:gap-2.5 2xl:gap-[7px] p-[5px] md:p-[7px] 2xl:p-[9px] rounded-full border border-grey-15">
 				{supported_currencies.map((item) => (
 					<Image
 						key={item.alt}
@@ -269,7 +281,7 @@ function SupportedCurrencies() {
 						alt={item.alt}
 						width={35}
 						height={35}
-						className="max-md:size-5"
+						className="2xl:size-[35px] md:size-[27px] size-5"
 					/>
 				))}
 			</div>

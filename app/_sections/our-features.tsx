@@ -13,13 +13,14 @@ import { ArrowUpRight } from "lucide-react";
 import { BorderBeam } from "@/components/magicui/border-beam";
 import { FadeInUpElement } from "@/components/animation/fade-in-up-variant";
 import { ContainerVariantElement } from "@/components/animation/container-variant";
+import { SectionContainer } from "@/components/custom/section-container";
 
 export default function OurFeatures() {
 	const [activeIndex, setActiveIndex] = useState<number>(0);
 	const featureCategory = [online_banking, financial_tools, customer_support];
 
 	return (
-		<section className="container flex flex-col gap-[60px] py-[100px]">
+		<SectionContainer>
 			<SectionDetailsContainer variant={containerVariants}>
 				<SectionTitle
 					custom
@@ -34,40 +35,62 @@ export default function OurFeatures() {
 				/>
 			</SectionDetailsContainer>
 
-			<div className="flex max-lg:flex-col gap-5">
-				<FadeInUpElement className="lg:max-w-[308px] lg:w-full max-h-fit flex lg:flex-col p-5 lg:p-10 xl:p-[50px] rounded-[10px] gap-5 bg-grey-11 overflow-x-auto scrollbar-none">
+			<div className="flex max-lg:flex-col gap-5 2xl:gap-[30px]">
+				<FadeInUpElement className="lg:max-w-[308px] lg:w-full max-h-fit flex lg:flex-col p-5 md:p-10 2xl:p-[50px] 2xl:rounded-[12px] rounded-[10px] gap-5 2xl:gap-6 bg-grey-11 overflow-x-auto scrollbar-none">
 					{["Online Banking", "Financial Tools", "Customer Support"].map(
 						(item, index) => (
-							<Button
+							<ToggleUsecaseBtn
 								key={item}
-								variant="outline"
-								onClick={() => setActiveIndex(index)}
-								className={cn(
-									"border-grey-15 xl:text-lg py-3.5 px-5 xl:py-[18px] xl:px-6 rounded-full",
-									{
-										"bg-grey-10 hover:bg-grey-10 text-green-60 hover:text-green-60":
-											index === activeIndex,
-										" bg-grey-15 hover:bg-grey-10 hover:text-white":
-											index !== activeIndex,
-									},
-								)}
-							>
-								{item}
-							</Button>
+								item={item}
+								index={index}
+								activeIndex={activeIndex}
+								setActiveIndex={setActiveIndex}
+							/>
 						),
 					)}
 				</FadeInUpElement>
 
 				<ContainerVariantElement
 					key={activeIndex}
-					className="grid md:grid-cols-2 gap-5"
+					className="grid md:grid-cols-2 gap-5 2xl:gap-[30px]"
 				>
 					{featureCategory[activeIndex].map((item) => (
 						<FeatureCard key={item.title} {...item} />
 					))}
 				</ContainerVariantElement>
 			</div>
-		</section>
+		</SectionContainer>
+	);
+}
+
+function ToggleUsecaseBtn({
+	item,
+	index,
+	activeIndex,
+	setActiveIndex,
+}: {
+	item: string;
+	index: number;
+	activeIndex: number;
+	setActiveIndex: (activeIndex: number) => void;
+}) {
+	return (
+		<Button
+			key={item}
+			variant="outline"
+			onClick={() => setActiveIndex(index)}
+			className={cn(
+				"border-grey-15 text-sm 2xl:text-lg py-3.5 px-5 2xl:py-[18px] 2xl:px-6 rounded-full",
+				{
+					"bg-grey-10 hover:bg-grey-10 text-green-60 hover:text-green-60":
+						index === activeIndex,
+					" bg-grey-15 hover:bg-grey-10 hover:text-white":
+						index !== activeIndex,
+				},
+			)}
+		>
+			{item}
+		</Button>
 	);
 }
 
@@ -75,21 +98,23 @@ function FeatureCard({ title, description }: IFearures) {
 	return (
 		<FadeInUpElement
 			asChild
-			className="relative h-full flex flex-col gap-6 md:gap-[30px] rounded-[10px] bg-grey-11 p-10 md:p-[50px] group"
+			className="relative h-full flex flex-col gap-5 md:gap-6 2xl:gap-[30px] rounded-[10px] bg-grey-11 p-[30px] md:p-10 2xl:p-[50px] group"
 		>
 			<div className="flex items-center justify-between">
-				<p className="text-lg xl:text-[22px]">{title}</p>
+				<p className="text-lg 2xl:text-[22px]">{title}</p>
 
 				<ArrowUpRight
 					size={34}
 					color="var(--green-60)"
-					className="group-hover:animate-bounce transition-transform"
+					className="group-hover:animate-bounce transition-transform 2xl:size-[34px] size-6"
 				/>
 			</div>
 
-			<p className="xl:text-lg font-light leading-[150%]">{description}</p>
+			<p className="2xl:text-lg md:text-base text-sm font-light leading-[150%]">
+				{description}
+			</p>
 
-			<BorderBeam size={225} duration={10} />
+			<BorderBeam size={200} duration={10} />
 		</FadeInUpElement>
 	);
 }

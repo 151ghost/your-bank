@@ -18,13 +18,14 @@ import {
 } from "@/components/ui/carousel";
 import { Separator } from "@/components/ui/separator";
 import { FadeInUpElement } from "@/components/animation/fade-in-up-variant";
+import { SectionContainer } from "@/components/custom/section-container";
 
 export default function Testimonial() {
 	const [activeIndex, setActiveIndex] = useState<number>(0);
 	const usecase = [individual_testimonies, business_testimonies];
 
 	return (
-		<section className="container flex flex-col gap-[60px] py-[100px]">
+		<SectionContainer>
 			<div className="w-full flex max-md:flex-col gap-y-5 items-center md:items-end justify-between">
 				<SectionDetailsContainer variant={containerVariants}>
 					<SectionTitle
@@ -61,7 +62,7 @@ export default function Testimonial() {
 					<CarouselNext className="size-[52px] border-grey-15 bg-grey-11 text-green-60 hover:bg-grey-15 hover:text-green-60" />
 				</div>
 			</Carousel>
-		</section>
+		</SectionContainer>
 	);
 }
 
@@ -71,8 +72,8 @@ function TestimonialCard({
 }: { testimony: string; user: string }) {
 	return (
 		<CarouselItem className="md:basis-1/2 lg:basis-1/3">
-			<FadeInUpElement className="flex flex-col items-center gap-10 xl:gap-[50px] max-md:border max-md:rounded-[12px] border-grey-15 max-md:p-5">
-				<div className="w-full flex items-center justify-center gap-5">
+			<FadeInUpElement className="flex flex-col items-center gap-[30px] md:gap-10 2xl:gap-[50px] max-md:border max-md:rounded-[12px] border-grey-15 max-md:p-5">
+				<div className="w-full flex items-center justify-center gap-4 2xl:gap-5">
 					<Separator className="max-w-1/4 h-[1px] bg-grey-15" />
 					<Image
 						src="/assets/quotation-mark.png"
@@ -84,10 +85,10 @@ function TestimonialCard({
 
 					<Separator className="max-w-1/4 h-[1px] bg-grey-15" />
 				</div>
-				<p className="text-center max-md:text-sm xl:text-lg leading-[150%]">
+				<p className="text-sm md:text-base 2xl:text-lg leading-[150%] text-center">
 					{testimony}
 				</p>
-				<p className="max-w-[90%] xl:text-lg font-medium text-green-60 text-center">
+				<p className="max-w-[90%] text-base 2xl:text-lg font-medium text-green-60 text-center">
 					{user}
 				</p>
 			</FadeInUpElement>

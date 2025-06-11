@@ -40,7 +40,7 @@ export default function UseCases() {
 				/>
 			</SectionDetailsContainer>
 
-			<div className="flex flex-col gap-10 xl:gap-[60px]">
+			<div className="flex flex-col gap-10 2xl:gap-[60px]">
 				{use_cases.map((item) => (
 					<UseCaseSections key={item.case} item={item} />
 				))}
@@ -64,7 +64,7 @@ function UseCaseSections({ item }: { item: IUseCases }) {
 	return (
 		<div
 			className={cn(
-				"flex flex-col lg:flex-row gap-[30px] md:gap-[60px] xl:gap-[100px]",
+				"flex flex-col lg:flex-row gap-[30px] md:gap-[60px] 2xl:gap-[100px]",
 				{
 					"lg:flex-row-reverse": item.case === "Business",
 				},
@@ -72,48 +72,41 @@ function UseCaseSections({ item }: { item: IUseCases }) {
 		>
 			<SlideInElement
 				custom={item.case === "Individual"}
-				className="relative grid grid-cols-2 gap-2.5 xl:gap-5 p-5 md:p-10 rounded-[10px] bg-grey-11 overflow-hidden"
+				className="relative grid grid-cols-2 gap-2.5 2xl:gap-5 p-5 md:p-10 2xl:p-[50px] rounded-[20px] bg-grey-11 overflow-hidden"
 			>
 				<Image
-					src="/assets/vector1.png"
+					src={
+						item.case === "Business"
+							? "/assets/vector3.png"
+							: "/assets/vector2.png"
+					}
 					alt="Vector"
 					width={248}
 					height={248}
-					className="absolute -top-2.5 -left-2.5"
+					className={cn("absolute -top-2.5", {
+						"-left-2.5": item.case === "Individual",
+						"-right-2.5": item.case === "Business",
+					})}
 				/>
 
-				{item.advantages.map((advantage) => (
-					<div
-						key={advantage.caption}
-						className="relative w-full h-full flex flex-col items-center gap-3.5 py-5 px-3.5 md:p-6 bg-grey-10 rounded-[12px]"
-					>
-						<PingIconCtn
-							type="use-cases"
-							icon={advantage.icon}
-							alt={advantage.caption}
-						/>
-						<p className="text-center max-md:text-sm xl:text-xl">
-							{advantage.caption}
-						</p>
-
-						<BorderBeam size={125} delay={6} />
-					</div>
+				{item.perks.map((perk) => (
+					<PerkCard key={perk.caption} {...perk} />
 				))}
 			</SlideInElement>
 
-			<div className="max-w-full lg:max-w-1/2 flex flex-col max-md:items-center gap-[50px]">
-				<ContainerVariantElement className="flex flex-col max-md:items-center gap-2.5">
+			<div className="max-w-full lg:max-w-1/2 flex flex-col max-md:items-center gap-[50px] 2xl:gap-[62px]">
+				<ContainerVariantElement className="flex flex-col max-md:items-center gap-2.5 2xl:gap-3.5">
 					<motion.p
 						custom={item.case === "Business"}
 						variants={slideInVariants}
-						className="text-xl md:text-[26px] xl:text-[30px] font-medium"
+						className="text-xl md:text-[26px] 2xl:text-[30px] font-medium"
 					>
 						For {item.case}
 					</motion.p>
 					<motion.p
 						custom={item.case === "Business"}
 						variants={slideInVariants}
-						className="max-md:w-[90%] max-md:text-center max-md:text-sm xl:text-lg font-light grey-70"
+						className="max-md:w-[90%] max-md:text-center text-sm md:text-base 2xl:text-lg font-light grey-70"
 					>
 						{item.description}
 					</motion.p>
@@ -133,7 +126,7 @@ function UseCaseSections({ item }: { item: IUseCases }) {
 					<Button
 						asChild
 						variant="outline"
-						className="w-fit border-grey-15 py-3.5 xl:py-[18px] px-5 xl:px-6 xl:text-lg rounded-full bg-grey-11 hover:bg-grey-15 hover:text-white transition-colors duration-200"
+						className="w-fit border-grey-15 py-3.5 px-5 2xl:py-[18px] 2xl:px-6 text-sm 2xl:text-lg rounded-full bg-grey-11 hover:bg-grey-15 hover:text-white transition-colors duration-200"
 					>
 						<Link href="/">Learn More</Link>
 					</Button>
@@ -171,15 +164,29 @@ function IndividualNumericData({
 			ref={ref}
 			custom={item_case === "Business"}
 			key={data.description}
-			className="flex flex-col max-md:items-center gap-[5px]"
+			className="flex flex-col max-md:items-center gap-0.5 md:gap-[5px]"
 		>
-			<p className="text-[40px] xl:text-[58px] font-medium text-green-60">
+			<p className="text-[40px] 2xl:text-[58px] font-medium text-green-60">
 				<motion.span>{roundedPercentage}</motion.span>%
 			</p>
-			<p className="max-md:text-sm font-light text-grey-70 text-[15px] xl:text-lg">
+			<p className="font-light text-grey-70 text-sm md:text-base 2xl:text-lg">
 				{data.description}
 			</p>
 		</SlideInElement>
+	);
+}
+
+function PerkCard({ caption, icon }: { caption: string; icon: string }) {
+	return (
+		<div
+			key={caption}
+			className="relative w-full h-full flex flex-col items-center gap-3.5 2xl:gap-6 py-5 px-3.5 md:p-6 2xl:p-[30px] bg-grey-10 rounded-[16px] border border-grey-15"
+		>
+			<PingIconCtn type="use-cases" icon={icon} alt={caption} />
+			<p className="text-center text-sm md:text-base 2xl:text-xl">{caption}</p>
+
+			<BorderBeam size={125} delay={6} />
+		</div>
 	);
 }
 
@@ -193,7 +200,7 @@ const use_cases: IUseCases[] = [
 			{ percentage: 63, description: "Manageable Debt Consolidation" },
 			{ percentage: 91, description: "Reducing financial burdens" },
 		],
-		advantages: [
+		perks: [
 			{
 				icon: "/assets/use-cases/personal-finances.png",
 				caption: "Managing Personal Finances",
@@ -218,7 +225,7 @@ const use_cases: IUseCases[] = [
 			{ percentage: 70, description: "Drive Business Expansion" },
 			{ percentage: 45, description: "Streamline payroll processing" },
 		],
-		advantages: [
+		perks: [
 			{
 				icon: "/assets/use-cases/b1.png",
 				caption: "Startups and Entrepreneurs",
@@ -234,5 +241,5 @@ interface IUseCases {
 	case: "Individual" | "Business";
 	description: string;
 	numeric_data: { percentage: number; description: string }[];
-	advantages: { icon: string; caption: string }[];
+	perks: { icon: string; caption: string }[];
 }

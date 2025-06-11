@@ -4,7 +4,6 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu } from "lucide-react";
 import { type NavLinks, navLinks } from "@/components/constants";
 import { motion } from "framer-motion";
 import { fadeInUpVariants, slideInVariants } from "@/components/animation";
@@ -56,7 +55,7 @@ function MobileNavigation() {
 	return (
 		<BaseSheet
 			trigger={
-				<Button variant="green" className="py-1.5 px-3.5 mr-7">
+				<Button variant="green" className="py-1.5 px-3.5">
 					<img
 						src="/assets/Icon.png"
 						alt="Hamburger menu icon"

@@ -13,7 +13,7 @@ import { SlideInElement } from "@/components/animation/slide-in-variant";
 
 export default function CtaSection() {
 	return (
-		<section className="py-[100px]">
+		<section className="py-[100px] max-md:px-4">
 			<div className="container relative w-full flex flex-col md:flex-row items-center gap-6 md:gap-[150px] p-[30px] md;px-[60px] xl:p-20 rounded-[20px] bg-[url(/assets/transaction-bg.png)] overflow-hidden">
 				<Image
 					src="/assets/vector1.png"

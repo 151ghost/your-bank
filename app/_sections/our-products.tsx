@@ -15,13 +15,14 @@ import {
 } from "@/components/custom/section-details";
 import ToggleCase from "@/components/custom/toggle-case";
 import { ContainerVariantElement } from "@/components/animation/container-variant";
+import { SectionContainer } from "@/components/custom/section-container";
 
 export default function OurProducts() {
 	const [activeIndex, setActiveIndex] = useState(0);
 	const useCases = [individual_usecase, business_usecase];
 
 	return (
-		<section className="container flex flex-col gap-[100px] py-[100px]">
+		<SectionContainer>
 			<div className="w-full flex max-md:flex-col gap-y-5 items-center md:items-end justify-between">
 				<SectionDetailsContainer variant={containerVariants}>
 					<SectionTitle
@@ -42,12 +43,12 @@ export default function OurProducts() {
 				<ToggleCase activeIndex={activeIndex} setActiveIndex={setActiveIndex} />
 			</div>
 
-			<ContainerVariantElement className="grid md:grid-cols-2 lg:grid-cols-3 gap-[50px]">
+			<ContainerVariantElement className="grid md:grid-cols-2 lg:grid-cols-3 gap-[30px] md:gap-10 2xl:gap-[50px]">
 				{useCases[activeIndex].map((item, index) => (
 					<ProductCard key={item.title} {...item} index={index} />
 				))}
 			</ContainerVariantElement>
-		</section>
+		</SectionContainer>
 	);
 }
 
@@ -56,12 +57,12 @@ function ProductCard({ icon, alt, title, caption, index }: IUseCaseProps) {
 		<motion.div
 			custom={index === 0}
 			variants={RenderVariant(index)}
-			className="flex flex-col items-center gap-[30px]"
+			className="flex flex-col items-center gap-5 md:gap-6 2xl:gap-[30px]"
 		>
 			<PingIconCtn icon={icon} alt={alt} />
-			<div className="flex flex-col items-center gap-5">
-				<p className="text-xl xl:text-2xl leadinf-[150px]">{title}</p>
-				<p className="max-md:text-sm xl:text-lg font-light text-grey-70 text-center">
+			<div className="flex flex-col items-center gap-2 md:gap-4 2xl:gap-5">
+				<p className="text-xl 2xl:text-2xl leading-[150%]">{title}</p>
+				<p className="text-sm md:text-base 2xl:text-lg font-light text-grey-70 text-center">
 					{caption}
 				</p>
 			</div>

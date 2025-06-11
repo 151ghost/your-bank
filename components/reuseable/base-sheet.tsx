@@ -20,7 +20,9 @@ export function BaseSheet({
 }) {
 	return (
 		<Sheet>
-			<SheetTrigger className="flex lg:hidden">{trigger}</SheetTrigger>
+			<SheetTrigger asChild className="flex lg:hidden">
+				{trigger}
+			</SheetTrigger>
 			<SheetContent>
 				<SheetHeader>
 					<SheetTitle className="sr-only">{title}</SheetTitle>
