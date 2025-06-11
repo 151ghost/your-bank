@@ -268,7 +268,7 @@ function MoneyExchangeCards({
 
 function SupportedCurrencies() {
 	return (
-		<FadeInUpElement className="w-fit flex items-center gap-3 py-[5px] pl-3 md:py-[7px] md:pr-4 2xl:p-2 2xl:pr-5 rounded-full bg-[#22251B] mt-5 ml-auto md:-mr-10">
+		<FadeInUpElement className="w-fit flex items-center gap-3 py-[5px] pl-3 md:py-[7px] pl-3 md:pl-4 2xl:p-2 2xl:pl-5 rounded-full bg-[#22251B] mt-5 ml-auto md:-mr-10">
 			<p className="text-[9px] md:text-xs 2xl:text-base">
 				Supported Currencies
 			</p>
