@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
+import HeroSection from "../_sections/hero";
 
-const HeroSection = dynamic(() => import("../about/sections/hero"));
 const MissionAndVision = dynamic(
   () => import("../about/sections/mission-and-vision")
 );
