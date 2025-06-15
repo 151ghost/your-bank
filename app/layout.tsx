@@ -5,37 +5,37 @@ import Header from "./_sections/header";
 import Footer from "./_sections/footer";
 
 const lexend = Lexend({
-	variable: "--font-lexend",
-	subsets: ["latin"],
+  variable: "--font-lexend",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-	title: { default: "YourBanK", template: "%s | YourBank" },
-	description:
-		"Your trusted banking partner for secure and convenient financial services",
-	icons: {
-		icon: "/assets/shape-30.png",
-	},
+  title: { default: "YourBanK", template: "%s | YourBank" },
+  description:
+    "Your trusted banking partner for secure and convenient financial services",
+  icons: {
+    icon: "/assets/shape-30.png",
+  },
 };
 
 export default function RootLayout({
-	children,
+  children,
 }: Readonly<{
-	children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-	return (
-		<html lang="en">
-			<body
-				className={`${lexend.variable} antialiased relative overflow-x-hidden`}
-			>
-				<Header />
+  return (
+    <html lang="en">
+      <body
+        className={`${lexend.variable} antialiased relative overflow-x-hidden`}
+      >
+        <Header />
 
-				<main className="w-full flex flex-col items-center 2xl:gap-[100px] md:gap-[70px] gap-10">
-					{children}
-				</main>
+        <main className="w-full flex flex-col items-center 2xl:gap-[100px] md:gap-[70px] gap-10">
+          {children}
+        </main>
 
-				<Footer />
-			</body>
-		</html>
-	);
+        <Footer />
+      </body>
+    </html>
+  );
 }
