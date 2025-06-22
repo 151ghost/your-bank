@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { easeInOut } from "framer-motion";
 
 export default function Loading() {
   const [loaded, setLoaded] = useState(false);
@@ -22,7 +23,7 @@ export default function Loading() {
     exit: {
       scale: 1.5,
       opacity: 0,
-      transition: { duration: 0.6, ease: "easeInOut" },
+      transition: { duration: 0.6, ease: easeInOut },
     },
   };
 

@@ -1,3 +1,5 @@
+"use client";
+
 import dynamic from "next/dynamic";
 
 import CareerHeroSection from "./sections/hero";
@@ -11,10 +13,6 @@ const CTASection = dynamic(() => import("../_sections/cta"));
 const JobOpeningsSection = dynamic(
   () => import("../careers/sections/job-openings")
 );
-
-export const metadata = {
-  title: "Careers",
-};
 
 export default function CareersPage() {
   return (

@@ -1,7 +1,8 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import type { Variants } from "framer-motion";
 
 export function SectionDetailsContainer({
   children,

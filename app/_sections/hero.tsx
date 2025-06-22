@@ -1,3 +1,5 @@
+"use client";
+
 import { ArrowLeftRight, BadgeCheck, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -7,6 +9,8 @@ import { SlideOutElement } from "@/components/animation/slide-out-variant";
 import { FadeInElement } from "@/components/animation/fade-in-variant";
 import { cn } from "@/lib/utils";
 import { BorderBeam } from "@/components/magicui/border-beam";
+import { LoopingAnimatedList } from "@/components/custom/looping-animated-list";
+import { AnimatedListItem } from "@/components/magicui/animated-list";
 
 export default function HeroSection() {
   return (
@@ -156,9 +160,16 @@ function TransactionCard() {
         </p>
 
         <div className="h-fit flex flex-col items-center">
-          {transactions.map((item, index) => (
-            <IndividualTransactions key={item.name} {...item} index={index} />
-          ))}
+          <LoopingAnimatedList
+            items={transactions}
+            interval={3000}
+            windowSize={3}
+            renderItem={(item) => (
+              <AnimatedListItem key={item.name}>
+                <IndividualTransactions {...item} />
+              </AnimatedListItem>
+            )}
+          />
         </div>
       </div>
 
@@ -183,20 +194,9 @@ function TransactionCard() {
   );
 }
 
-function IndividualTransactions({
-  name,
-  amount,
-  index,
-}: IndividualTransactionProps) {
+function IndividualTransactions({ name, amount }: Transactions) {
   return (
-    <div
-      className={cn(
-        "flex items-center justify-between bg-grey-11 py-3 px-3 md:py-[11px] md:px-[17px] 2xl:py-3.5 2xl:px-[21px] border border-grey-15 rounded-[10px]",
-        { "w-full z-30": index === 0 },
-        { "w-[90%] z-20 -mt-[28px] opacity-50": index === 1 },
-        { "w-[80%] z-10 -mt-[28px] opacity-30": index === 2 }
-      )}
-    >
+    <div className="flex items-center justify-between bg-grey-11 py-3 px-3 md:py-[11px] md:px-[17px] 2xl:py-3.5 2xl:px-[21px] border border-grey-15 rounded-[10px]">
       <DetailsBlock
         type="transaction"
         icon={
@@ -293,6 +293,8 @@ const transactions: Transactions[] = [
   { name: "Joel Kenley", amount: 68 },
   { name: "Mark Smith", amount: 80 },
   { name: "Lenen Roy", amount: 75 },
+  { name: "Jane Doe", amount: 90 },
+  { name: "Daniel Scott", amount: 120 },
 ];
 
 const money_exchange: MoneyExchangeProps[] = [
@@ -322,10 +324,6 @@ const supported_currencies: SupportedCurrencies[] = [
 interface Transactions {
   name: string;
   amount: number;
-}
-
-interface IndividualTransactionProps extends Transactions {
-  index: number;
 }
 
 interface MoneyExchangeProps {
