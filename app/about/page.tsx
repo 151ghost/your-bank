@@ -6,6 +6,10 @@ const MissionAndVision = dynamic(
 );
 const PressRelease = dynamic(() => import("../about/sections/press-release"));
 
+export const metadata = {
+  title: "About",
+};
+
 export default function AboutPage() {
   return (
     <>

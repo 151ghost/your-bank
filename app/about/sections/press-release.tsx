@@ -10,10 +10,11 @@ import { containerVariants, slideInVariants } from "@/components/animation";
 import { BorderBeam } from "@/components/magicui/border-beam";
 import Image from "next/image";
 import { CustomBadge as PressReleaseCardDescription } from "@/components/custom/badge";
+import { FadeInUpElement } from "@/components/animation/fade-in-up-variant";
 
 export default function PressRelease() {
   return (
-    <SectionContainer className="mb-[150px]">
+    <SectionContainer>
       <SectionDetailsContainer variant={containerVariants}>
         <SectionTitle variant={slideInVariants} specialText="Press Releases" />
         <SectionDescription
@@ -40,7 +41,7 @@ function PressReleaseCard({
   paragraph,
 }: IPressReleaseCardProp) {
   return (
-    <div className="relative flex flex-col gap-[30px] md:gap-[51px] md:p-[30px] p-5 rounded-t-[40px] rounded-b-2xl outline-1 outline-grey-15 bg-grey-11">
+    <FadeInUpElement className="relative flex flex-col gap-[30px] md:gap-[51px] md:p-[30px] p-5 rounded-t-[40px] rounded-b-2xl outline-1 outline-grey-15 bg-grey-11">
       <Image
         src={src}
         alt={alt}
@@ -72,7 +73,7 @@ function PressReleaseCard({
       </div>
 
       <BorderBeam size={200} />
-    </div>
+    </FadeInUpElement>
   );
 }
 

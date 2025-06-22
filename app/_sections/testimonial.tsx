@@ -25,7 +25,7 @@ export default function Testimonial() {
   const usecase = [individual_testimonies, business_testimonies];
 
   return (
-    <SectionContainer>
+    <SectionContainer className="2xl:gap-[100px] md:gap-20 gap-[60px]">
       <div className="w-full flex max-md:flex-col gap-y-5 items-center md:items-end justify-between">
         <SectionDetailsContainer variant={containerVariants}>
           <SectionTitle

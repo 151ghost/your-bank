@@ -13,14 +13,14 @@ import { SlideInElement } from "@/components/animation/slide-in-variant";
 
 export default function CtaSection() {
   return (
-    <section className="py-[100px] max-md:px-4">
-      <div className="container relative w-full flex flex-col md:flex-row items-center gap-6 md:gap-[150px] p-[30px] md;px-[60px] xl:p-20 rounded-[20px] bg-[url(/assets/transaction-bg.png)] overflow-hidden">
+    <section className="max-md:px-4">
+      <div className="container relative w-full flex flex-col md:flex-row items-center gap-6 md:gap-[150px] p-[30px] md:p-[60px] 2xl:p-20 rounded-[20px] bg-[url(/assets/transaction-bg.png)] overflow-hidden">
         <Image
           src="/assets/vector1.png"
           alt="Vector"
           width={298}
           height={298}
-          className="absolute -top-1 -left-2.5"
+          className="absolute -top-1 -left-2.5 z-10"
         />
 
         <SectionDetailsContainer variant={containerVariants}>
@@ -39,10 +39,10 @@ export default function CtaSection() {
           />
         </SectionDetailsContainer>
 
-        <SlideInElement className="w-fit h-fit">
+        <SlideInElement custom={false} className="w-fit h-fit">
           <Button
             variant="green"
-            className="py-3.5 px-5 2xl:py-[18px] 2xl:px-[30px] rounded-full text-sm 2xl:text-lg text-grey-11"
+            className="py-3.5 px-5 2xl:py-[18px] 2xl:px-[30px] h-[50px] 2xl:h-[63px] rounded-full text-sm 2xl:text-lg text-grey-11"
           >
             Open Account
           </Button>

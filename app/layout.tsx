@@ -30,7 +30,7 @@ export default function RootLayout({
       >
         <Header />
 
-        <main className="w-full flex flex-col items-center 2xl:gap-[100px] md:gap-[70px] gap-10">
+        <main className="w-full flex flex-col items-center 2xl:gap-[150px] md:gap-[120px] gap-20 2xl:mb-[150px] md:mb-[120px] mb-20">
           {children}
         </main>
 

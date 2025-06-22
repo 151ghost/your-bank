@@ -16,13 +16,15 @@ import {
 import ToggleCase from "@/components/custom/toggle-case";
 import { ContainerVariantElement } from "@/components/animation/container-variant";
 import { SectionContainer } from "@/components/custom/section-container";
+import { Separator } from "@/components/ui/separator";
+import { FadeInElement } from "@/components/animation/fade-in-variant";
 
 export default function OurProducts() {
   const [activeIndex, setActiveIndex] = useState(0);
   const useCases = [individual_usecase, business_usecase];
 
   return (
-    <SectionContainer>
+    <SectionContainer className="2xl:gap-[100px] md:gap-20 gap-[60px]">
       <div className="w-full flex max-md:flex-col gap-y-5 items-center md:items-end justify-between">
         <SectionDetailsContainer variant={containerVariants}>
           <SectionTitle
@@ -47,8 +49,21 @@ export default function OurProducts() {
         key={activeIndex}
         className="grid md:grid-cols-2 lg:grid-cols-3 gap-[30px] md:gap-10 2xl:gap-[50px]"
       >
-        {useCases[activeIndex].map((item, index) => (
-          <ProductCard key={item.title} {...item} index={index} />
+        {useCases[activeIndex].map((item, index, arr) => (
+          <div
+            key={item.title}
+            className="flex flex-col md:flex-row gap-[30px] md:gap-10 2xl:gap-[50px]"
+          >
+            <ProductCard {...item} index={index} />
+            {index < arr.length - 1 && (
+              <FadeInElement key={item.title}>
+                <Separator
+                  orientation="vertical"
+                  className="hidden lg:block h-full"
+                />
+              </FadeInElement>
+            )}
+          </div>
         ))}
       </ContainerVariantElement>
     </SectionContainer>
