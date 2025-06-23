@@ -67,13 +67,6 @@ export default function SignUpForm() {
       </SlideInElement>
 
       <SlideInElement custom={false}>
-        <Input
-          placeholder="Enter your last name"
-          className="hover:border-green-60 relative"
-        />
-      </SlideInElement>
-
-      <SlideInElement>
         <FormField
           showError
           showMessage
@@ -82,7 +75,22 @@ export default function SignUpForm() {
           className="z-50"
         >
           <Input
-            placeholder="Enter your lastName"
+            placeholder="Enter your last name"
+            className="hover:border-green-60 relative"
+          />
+        </FormField>
+      </SlideInElement>
+
+      <SlideInElement>
+        <FormField
+          showError
+          showMessage
+          form={form}
+          name="email"
+          className="z-50"
+        >
+          <Input
+            placeholder="Enter your email"
             className="hover:border-green-60 relative"
           />
         </FormField>

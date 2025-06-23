@@ -12,6 +12,7 @@ import { SlideInElement } from "@/components/animation/slide-in-variant";
 import { BaseSheet } from "@/components/reuseable/base-sheet";
 import { FadeInUpElement } from "@/components/animation/fade-in-up-variant";
 import { cn } from "@/lib/utils";
+import { useState } from "react";
 
 export default function Header() {
   const path = usePathname();
@@ -50,10 +51,14 @@ export default function Header() {
 }
 
 function MobileNavigation() {
+  const [open, setOpen] = useState<boolean>(false);
+
   const path = usePathname();
 
   return (
     <BaseSheet
+      open={open}
+      setOpen={setOpen}
       trigger={
         <Button variant="green" className="py-1.5 px-3.5">
           <Image
@@ -71,7 +76,14 @@ function MobileNavigation() {
         {navLinks.slice(0, 4).map((item) => {
           const isActive = path === item.href;
 
-          return <NavButton key={item.name} item={item} isActive={isActive} />;
+          return (
+            <NavButton
+              key={item.name}
+              item={item}
+              isActive={isActive}
+              action={() => setOpen(false)}
+            />
+          );
         })}
 
         <AuthLinkButtons type="mobile" />
@@ -80,12 +92,21 @@ function MobileNavigation() {
   );
 }
 
-function NavButton({ isActive, item }: { isActive: boolean; item: NavLinks }) {
+function NavButton({
+  isActive,
+  item,
+  action,
+}: {
+  isActive: boolean;
+  item: NavLinks;
+  action?: () => void;
+}) {
   return (
     <FadeInUpElement className="w-full md:w-fit h-fit">
       <Button
         key={item.name}
         asChild
+        onClick={action}
         className={cn(
           "h-[51px] flex justify-start md:text-sm 2xl:text-lg 2xlpy-3 2xl:px-6 py-2.3 px-[18px] rounded-full",
           {

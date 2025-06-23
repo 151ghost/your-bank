@@ -12,14 +12,18 @@ export function BaseSheet({
   title,
   description,
   trigger,
+  open,
+  setOpen,
 }: {
   children: React.ReactNode;
   title: string;
   description: string;
   trigger: React.ReactNode;
+  open: boolean;
+  setOpen: (open: boolean) => void;
 }) {
   return (
-    <Sheet>
+    <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild className="flex lg:hidden">
         {trigger}
       </SheetTrigger>
