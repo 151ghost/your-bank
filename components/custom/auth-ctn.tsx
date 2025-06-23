@@ -16,6 +16,7 @@ export function AuthContainer<T extends FieldValues>({
   children,
   form,
   onSubmit,
+  type = "login",
 }: IAuthProps<T>) {
   return (
     <div className="relative 2xl:max-w-[1326px] max-w-[90%] w-full flex flex-col mt-[53px] 2xl:gap-20 md:gap-[60px] gap-10 items-center 2xl:py-[100px] 2xl:px-[150px] md:py-20 md:px-[80px] p-[30px] rounded-[20px] bg-grey-11 border border-grey-15 overflow-hidden">
@@ -45,7 +46,7 @@ export function AuthContainer<T extends FieldValues>({
           </p>
         </FadeInUpElement>
         <FadeInUpElement className="w-fit h-fit">
-          <p className="2xl:text-lg md:text-base text-sm font-light text-grey-75 max-md:text-center">
+          <p className="2xl:text-lg md:text-base text-sm font-light text-grey-75 text-center">
             {description}
           </p>
         </FadeInUpElement>
@@ -59,14 +60,17 @@ export function AuthContainer<T extends FieldValues>({
         <div className="w-full grid md:grid-cols-2 md:gap-[30px] gap-5">
           {children}
         </div>
-        <FadeInUpElement>
-          <Link
-            href="/"
-            className="2xl:text-lg md:text-base text-sm leaading-[150%] underline underline-offset-4 text-white hover:text-green-60 transition-colors duration-200"
-          >
-            Forgot Password?
-          </Link>
-        </FadeInUpElement>
+
+        {type === "login" && (
+          <FadeInUpElement>
+            <Link
+              href="/"
+              className="2xl:text-lg md:text-base text-sm leaading-[150%] underline underline-offset-4 text-white hover:text-green-60 transition-colors duration-200"
+            >
+              Forgot Password?
+            </Link>
+          </FadeInUpElement>
+        )}
 
         <div className="w-full flex flex-col gap-6 2xl:px-[254px] md:px-[130px] z-50">
           <FadeInUpElement>
@@ -75,7 +79,7 @@ export function AuthContainer<T extends FieldValues>({
               variant="green"
               className="min-w-full 2xl:py-[18px] 2xl:px-5 py-3.5 px-6 2xl:text-lg text-sm text-grey-15 2xl:h-[63px] h-[49px]"
             >
-              Login
+              {type === "login" ? "Login" : "Sign Up"}
             </Button>
           </FadeInUpElement>
 
@@ -84,7 +88,7 @@ export function AuthContainer<T extends FieldValues>({
               type="button"
               className="min-w-full 2xl:py-[18px] 2xl:px-5 py-3.5 px-6 2xl:text-lg text-sm text-white 2xl:h-[63px] !h-[49px] bg-grey-15 border border-grey-20 font-normal rounded-full"
             >
-              Sign Up
+              {type === "login" ? "Sign Up" : "Login"}
             </Button>
           </FadeInUpElement>
 
@@ -123,6 +127,7 @@ const authOptions: { alt: string; icon: string }[] = [
 ];
 
 interface IAuthProps<T extends FieldValues> {
+  type?: "sign-up" | "login";
   heading: string;
   description: string;
   children: React.ReactNode;
