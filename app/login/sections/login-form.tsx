@@ -10,7 +10,7 @@ import { PasswordInput } from "@/components/reuseable/password-input";
 import { SlideInElement } from "@/components/animation/slide-in-variant";
 
 const loginSchema = z.object({
-  email: z.string().email({ message: "Provide a valid message" }),
+  email: z.string().email({ message: "Provide a valid email" }),
   password: z
     .string()
     .min(8, { message: "Password must be at least 8 characters long" })

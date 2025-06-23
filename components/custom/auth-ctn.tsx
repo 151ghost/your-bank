@@ -38,7 +38,7 @@ export function AuthContainer<T extends FieldValues>({
         )}
       />
 
-      <ContainerVariantElement className="flex flex-col items-center 2xl:gap-5 md:gap-4 gap-2.5">
+      <ContainerVariantElement className="flex flex-col items-center 2xl:gap-5 md:gap-4 gap-2.5 z-50">
         <FadeInUpElement className="w-fit h-fit">
           <p className="2xl:text-5xl md:text-[38px] text-[28px] font-medium text-green-60">
             {heading}
