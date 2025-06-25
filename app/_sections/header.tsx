@@ -86,7 +86,7 @@ function MobileNavigation() {
           );
         })}
 
-        <AuthLinkButtons type="mobile" />
+        <AuthLinkButtons type="mobile" action={() => setOpen(false)} />
       </ContainerVariantElement>
     </BaseSheet>
   );
@@ -123,8 +123,10 @@ function NavButton({
 
 function AuthLinkButtons({
   type = "desktop",
+  action,
 }: {
   type?: "desktop" | "mobile";
+  action?: () => void;
 }) {
   return (
     <>
@@ -135,6 +137,7 @@ function AuthLinkButtons({
         <Button
           asChild
           variant="ghost"
+          onClick={type === "mobile" ? action : undefined}
           className={cn(
             "h-[55px] text-sm 2xl:text-lg bg-grey-10 lg:bg-transparent rounded-full hover:bg-grey-10 hover:text-white",
             {
@@ -154,6 +157,7 @@ function AuthLinkButtons({
         <Button
           variant="green"
           asChild
+          onClick={type === "mobile" ? action : undefined}
           className={cn(
             "h-[55px] py-[14px] px-[30px] text-sm 2xl:text-lg hover:bg-green-65",
             {
