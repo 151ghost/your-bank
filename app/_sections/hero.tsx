@@ -70,7 +70,7 @@ export default function HeroSection() {
               />
             }
             title="+ $5000,00"
-            description="Monthly Income"
+            description="Monthly Profit"
           />
         </SlideOutElement>
 
@@ -299,18 +299,18 @@ const transactions: Transactions[] = [
 
 const money_exchange: MoneyExchangeProps[] = [
   {
-    image: "/assets/ngn.png",
-    image_alt: "Nigeria's Flag",
-    currency_shorthand: "NGN",
-    currency: "Nigerian Naira",
-    amount: 500,
+    image: "/assets/btc.png",
+    image_alt: "Bitcoin",
+    currency_shorthand: "BTC",
+    currency: "Bitcoin",
+    amount: 132,
   },
   {
-    image: "/assets/usa.png",
+    image: "/assets/rth.png",
     image_alt: "USA's Flag",
-    currency_shorthand: "USD",
-    currency: "United States Dollar",
-    amount: 500,
+    currency_shorthand: "ETH",
+    currency: "Ethereum",
+    amount: 720,
   },
 ];
 
